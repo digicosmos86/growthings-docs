@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sensors &mdash; Growthings 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Growthings 0.1 documentation" href="index.html"/>
+        <link rel="up" title="API Reference" href="api.html"/>
+        <link rel="next" title="Actuators" href="actuators.html"/>
+        <link rel="prev" title="API Reference" href="api.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Growthings
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Quickstart Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-humidity-sensor">Temperature/Humidity Sensor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#light-sensor">Light Sensor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moisture-sensor">Moisture Sensor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="actuators.html">Actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iot.html">IoT modules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Growthings</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api.html">API Reference</a> &raquo;</li>
+        
+      <li>Sensors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sensors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sensors">
+<h1>Sensors<a class="headerlink" href="#sensors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="temperature-humidity-sensor">
+<h2>Temperature/Humidity Sensor<a class="headerlink" href="#temperature-humidity-sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sensors.TemperatureSensor">
+<em class="property">class </em><code class="descclassname">sensors.</code><code class="descname">TemperatureSensor</code><span class="sig-paren">(</span><em>port[=3]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows reading temperature and humidity information from the Grove Temperature Sensor based on DHT11. We recommend that this sensor be connected to Port 3, which is the default for this class. The <code class="docutils literal"><span class="pre">port</span></code> parameter defines which port the sensor is connected to.</p>
+<dl class="method">
+<dt id="sensors.TemperatureSensor.TemperatureSensor.get_temperature">
+<code class="descclassname">TemperatureSensor.</code><code class="descname">get_temperature</code><span class="sig-paren">(</span><em>celsius[=False]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensor.TemperatureSensor.get_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature reading in Fahrenheit. If <code class="docutils literal"><span class="pre">celsius</span></code> is set to <code class="docutils literal"><span class="pre">True</span></code> then the celsius temperature will be returned.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This temperature sensor offers a resolution of 1 degree Celsius. If you want more accurate readings, please try the pro version below.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensors.TemperatureSensor.TemperatureSensor.get_humidity">
+<code class="descclassname">TemperatureSensor.</code><code class="descname">get_humidity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensor.TemperatureSensor.get_humidity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the relative humidity in percentage.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sensors</span> <span class="kn">import</span> <span class="n">TemperatureSensor</span><span class="p">()</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">()</span> <span class="c1"># defines a temperature sensor at default port (Port 3)</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">()</span> <span class="c1"># returns the Fahrenheit value</span>
+<span class="n">t</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># returns the Celsius value</span>
+<span class="n">t</span><span class="o">.</span><span class="n">get_humidity</span><span class="p">()</span> <span class="c1"># returns the humidity value</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="sensors.TemperatureSensorPro">
+<em class="property">class </em><code class="descclassname">sensors.</code><code class="descname">TemperatureSensorPro</code><span class="sig-paren">(</span><em>port[=3]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensorPro" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows reading temperature and humidity information from the Grove Temperature Sensor Pro based on DHT22 (AM2302). We recommend that this sensor be connected to Port 3, which is the default for this class. The <code class="docutils literal"><span class="pre">port</span></code> parameter defines which port the sensor is connected to.</p>
+<dl class="method">
+<dt id="sensors.TemperatureSensorPro.TemperatureSensorPro.get_temperature">
+<code class="descclassname">TemperatureSensorPro.</code><code class="descname">get_temperature</code><span class="sig-paren">(</span><em>celsius[=False]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensorPro.TemperatureSensorPro.get_temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the temperature reading in Fahrenheit. If <code class="docutils literal"><span class="pre">celsius</span></code> is set to <code class="docutils literal"><span class="pre">True</span></code> then the celsius temperature will be returned.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This temperature sensor offers a resolution of .1 degree Celsius.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensors.TemperatureSensorPro.TemperatureSensorPro.get_humidity">
+<code class="descclassname">TemperatureSensorPro.</code><code class="descname">get_humidity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensorPro.TemperatureSensorPro.get_humidity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the relative humidity in percentage.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sensors</span> <span class="kn">import</span> <span class="n">TemperatureSensorPro</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># defines a temperature sensor pro at default port (Port 3)</span>
+
+<span class="n">t</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">()</span> <span class="c1"># returns the Fahrenheit value</span>
+<span class="n">t</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># returns the Celsius value</span>
+<span class="n">t</span><span class="o">.</span><span class="n">get_humidity</span><span class="p">()</span> <span class="c1"># returns the humidity value</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="light-sensor">
+<h2>Light Sensor<a class="headerlink" href="#light-sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sensors.LightSensor">
+<em class="property">class </em><code class="descclassname">sensors.</code><code class="descname">LightSensor</code><span class="sig-paren">(</span><em>port[=6], address[=0x29]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.LightSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows reading lux values from the Grove Digital Light Sensor based on the TSL2561 I2C light sensor. The <code class="docutils literal"><span class="pre">port</span></code> parameter cannot be any other number than 6, and the sensor can be connected to the board through an I2C hub. The <code class="docutils literal"><span class="pre">address</span></code> parameter assigns the I2C address of the light sensor. <code class="docutils literal"><span class="pre">0x29</span> <span class="pre">(41)</span></code> is the default for the Grove sensor. The Adafruit version has a default of <code class="docutils literal"><span class="pre">0x39</span> <span class="pre">(57)</span></code>.</p>
+<dl class="method">
+<dt id="sensors.LightSensor.LightSensor.get_lux">
+<code class="descclassname">LightSensor.</code><code class="descname">get_lux</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sensors.LightSensor.LightSensor.get_lux" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the light intensity reading as lux.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Useful lux values:</p>
+<ul class="last simple">
+<li>Sunlight: 107,527</li>
+<li>Full Daylight: 10,752</li>
+<li>Overcast Day: 1,075</li>
+<li>Very Dark Day: 107</li>
+<li>Twilight: 10.8</li>
+<li>Full Moon: .108</li>
+</ul>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># The following code reads light value every 5 seconds,</span>
+<span class="c1"># and if it&#39;s too dark (lux &lt; 100), prints a warning message</span>
+
+<span class="kn">from</span> <span class="nn">sensors</span> <span class="kn">import</span> <span class="n">LightSensor</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">LightSensor</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">lux</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">get_lux</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">lux</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Too Dark!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="moisture-sensor">
+<h2>Moisture Sensor<a class="headerlink" href="#moisture-sensor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="MoistureSensor">
+<em class="property">class </em><code class="descname">MoistureSensor</code><span class="sig-paren">(</span><em>port[=4]</em><span class="sig-paren">)</span><a class="headerlink" href="#MoistureSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows reading moisture values from the Grove Moisture Sensor. The <code class="docutils literal"><span class="pre">port</span></code> parameter cannot be any other number than 4, because the sensor is analog.</p>
+<dl class="method">
+<dt id="MoistureSensor.get_moisture">
+<code class="descname">get_moisture</code><span class="sig-paren">(</span><em>port[=4]</em><span class="sig-paren">)</span><a class="headerlink" href="#MoistureSensor.get_moisture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the raw moisture reading.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Because the moisture sensor is analog, the values of the sensor readings might vary from case to case.  It is a good idea to calibrate the sensor by experimenting on the soil.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="actuators.html" class="btn btn-neutral float-right" title="Actuators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paul Xu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

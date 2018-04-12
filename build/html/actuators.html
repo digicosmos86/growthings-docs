@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Actuators &mdash; Growthings 0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Growthings 0.1 documentation" href="index.html"/>
+        <link rel="up" title="API Reference" href="api.html"/>
+        <link rel="next" title="IoT modules" href="iot.html"/>
+        <link rel="prev" title="Sensors" href="sensors.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Growthings
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide.html">Quickstart Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sensors.html">Sensors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Actuators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#servo">Servo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#relay">Relay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#grow-light-strip">Grow Light Strip</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="iot.html">IoT modules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Growthings</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api.html">API Reference</a> &raquo;</li>
+        
+      <li>Actuators</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/actuators.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="actuators">
+<h1>Actuators<a class="headerlink" href="#actuators" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="servo">
+<h2>Servo<a class="headerlink" href="#servo" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="actuators.Servo">
+<em class="property">class </em><code class="descclassname">actuators.</code><code class="descname">Servo</code><span class="sig-paren">(</span><em>port[=2], position[=0]</em><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Servo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows control of a Grove Servo. Default <code class="docutils literal"><span class="pre">port</span></code> for the servo is <code class="docutils literal"><span class="pre">2</span></code>. The <code class="docutils literal"><span class="pre">position</span></code> parameter sets the initial position of the servo.</p>
+<dl class="method">
+<dt id="actuators.Servo.Servo.set_position">
+<code class="descclassname">Servo.</code><code class="descname">set_position</code><span class="sig-paren">(</span><em>degree</em><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Servo.Servo.set_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the <code class="docutils literal"><span class="pre">degree</span></code> position of the servo (between <code class="docutils literal"><span class="pre">0</span></code> and <code class="docutils literal"><span class="pre">180</span></code>, which is half a circle). If <code class="docutils literal"><span class="pre">degree</span></code> is greater than 180, the servo will be set at the <code class="docutils literal"><span class="pre">180</span></code> degree position.  Likewise, if <code class="docutils literal"><span class="pre">degree</span></code> is less than <code class="docutils literal"><span class="pre">0</span></code>, the servo will rotate to the 0 degree position.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuators.Servo.Servo.get_position">
+<code class="descclassname">Servo.</code><code class="descname">get_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Servo.Servo.get_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the current position of the servo in degrees.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">actuators</span> <span class="kn">import</span> <span class="n">Servo</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">Servo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">init_degree</span> <span class="o">=</span> <span class="mi">180</span><span class="p">)</span> <span class="c1"># defines a servo connected to port 1 with initial position at 180 degrees.</span>
+<span class="n">s</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span> <span class="c1"># rotate the servo by 90 degrees.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="relay">
+<h2>Relay<a class="headerlink" href="#relay" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="actuators.Relay">
+<em class="property">class </em><code class="descclassname">actuators.</code><code class="descname">Relay</code><span class="sig-paren">(</span><em>port[=1]</em><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Relay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows control of a Grove Relay. The relay by default is normally open (NO) triggered by a <code class="docutils literal"><span class="pre">high</span></code> signal.</p>
+<dl class="method">
+<dt id="actuators.Relay.Relay.on">
+<code class="descclassname">Relay.</code><code class="descname">on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Relay.Relay.on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Activate the relay, close the circuit, and turn on whatever appliance that’s connected to the relay.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuators.Relay.Relay.off">
+<code class="descclassname">Relay.</code><code class="descname">off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Relay.Relay.off" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deactivate the relay, open the circuit, and turn off whatever appliance that’s connected to the relay.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="grow-light-strip">
+<h2>Grow Light Strip<a class="headerlink" href="#grow-light-strip" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="GrowLight">
+<em class="property">class </em><code class="descname">GrowLight</code><span class="sig-paren">(</span><em>port[=1], n[=60]</em><span class="sig-paren">)</span><a class="headerlink" href="#GrowLight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows control of a 5V LED strip based on the WS2812b (NeoPixel). <code class="docutils literal"><span class="pre">n</span></code> specifies the number of LEDs on the strip. Default is <code class="docutils literal"><span class="pre">60</span></code>.</p>
+<dl class="method">
+<dt id="GrowLight.on">
+<code class="descname">on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GrowLight.on" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns on the LED strip as a plant growth light that emits red and blue light.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GrowLight.off">
+<code class="descname">off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GrowLight.off" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turns off the LED strip.</p>
+</dd></dl>
+
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">This class is a subclass of MicroPython’s <code class="docutils literal"><span class="pre">neopixel.NeoPixel</span></code> class, so it can be programmed the same way as the Neo Pixel.  See <a class="reference external" href="http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/neopixel.html">this page</a> for more details and examples.</p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="iot.html" class="btn btn-neutral float-right" title="IoT modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sensors.html" class="btn btn-neutral" title="Sensors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paul Xu.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
