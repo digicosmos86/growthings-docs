@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Growthings'
+project = 'GrowThings'
 copyright = '2018, Paul Xu'
 author = 'Paul Xu'
 
