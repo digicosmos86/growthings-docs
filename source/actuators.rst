@@ -1,5 +1,7 @@
-Actuators
-==================================
+`actuators` - Working with Actuators
+====================================
+
+The :mod:`actuators` module provides a collection of classes to interact with actuators, such as servos, relays, and the grow light LED strip.
 
 Servo
 ----------------------------------

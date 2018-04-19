@@ -1,6 +1,7 @@
-Sensors
-==============================
+:mod:`sensors` Working with Sensors
+===================================
 
+The :mod:`sensors` module provides a collection of classes to interact with sensors, such as temperature, light, and soil moisture sensor.
 
 Temperature/Humidity Sensor
 ------------------------------
@@ -20,6 +21,10 @@ Temperature/Humidity Sensor
     .. method:: TemperatureSensor.get_humidity()
 
         Returns the relative humidity in percentage.
+
+    .. method:: TemperatureSensor.show_data(screen)
+
+        Shows the temperature (in Fahrenheit) and relative humidity on the specified screen object.
 
 Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -49,6 +54,10 @@ Example
 
         Returns the relative humidity in percentage.
 
+    .. method:: TemperatureSensor.show_data(screen, line)
+
+        Shows the temperature (in Fahrenheit) and relative humidity on the specified ``screen`` object on the specified ``line``.
+
 .. code-block:: python
 
     from sensors import TemperatureSensorPro 
@@ -57,6 +66,12 @@ Example
     t.get_temperature() # returns the Fahrenheit value
     t.get_temperature(True) # returns the Celsius value
     t.get_humidity() # returns the humidity value
+
+    # shows temperature/humidity data on the oled screen
+    from displays import OledScreen
+
+    screen = OledScreen(6)
+    t.show_data(screen, 1)
 
 Light Sensor
 ------------------------------
@@ -80,6 +95,10 @@ Light Sensor
             * Twilight: 10.8
             * Full Moon: .108
 
+    .. method:: LightSensor.show_data(screen, line)
+
+        Shows the light intensity reading in lux on the specified ``screen`` object on the specified ``line``.
+
 Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -89,6 +108,8 @@ Example
     # and if it's too dark (lux < 100), prints a warning message
 
     from sensors import LightSensor
+    import time
+
     l = LightSensor()
 
     while True:
@@ -96,6 +117,8 @@ Example
 
         if lux < 100:
             print("Too Dark!")
+
+        time.sleep(20) # wait for 20 seconds
 
 Moisture Sensor
 ------------------------------
@@ -111,3 +134,7 @@ Moisture Sensor
         .. warning::
 
             Because the moisture sensor is analog, the values of the sensor readings might vary from case to case.  It is a good idea to calibrate the sensor by experimenting on the soil.
+
+    .. method:: LightSensor.show_data(screen, line)
+
+        Shows the raw moisture reading on the specified ``screen`` object on the specified ``line``.

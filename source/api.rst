@@ -7,5 +7,6 @@ API Reference
 
    sensors
    actuators
+   displays
    iot
 
