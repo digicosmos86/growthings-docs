@@ -1,5 +1,5 @@
 :mod:`displays` - Working with Displays
-====================================
+=======================================
 
 The :mod:`displays` module provides a collection of classes to interact with screens. As of now only the Grove 0.96" OLED screen is supported.
 

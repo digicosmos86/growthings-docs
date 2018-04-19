@@ -1,5 +1,5 @@
-:mod:`sensors` Working with Sensors
-===================================
+:mod:`sensors` - Working with Sensors
+=====================================
 
 The :mod:`sensors` module provides a collection of classes to interact with sensors, such as temperature, light, and soil moisture sensor.
 
