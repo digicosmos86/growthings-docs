@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Quickstart Guide &mdash; Growthings 0.1 documentation</title>
+  <title>Quickstart Guide &mdash; GrowThings 0.1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Growthings 0.1 documentation" href="index.html"/>
+    <link rel="top" title="GrowThings 0.1 documentation" href="index.html"/>
         <link rel="next" title="API Reference" href="api.html"/>
         <link rel="prev" title="Setting up the Raspberry Pi Zero W" href="raspi.html"/> 
 
@@ -56,7 +56,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Growthings
+            <a href="index.html" class="icon icon-home"> GrowThings
           
 
           
@@ -94,7 +94,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import-the-corresponding-class">1. Import the corresponding class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-an-instance-referring-to-the-sensor">2. Create an instance referring to the sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interact-with-the-devices-using-the-instances">3. Interact with the devices using the instances</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
 </ul>
 
@@ -110,7 +115,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Growthings</a>
+          <a href="index.html">GrowThings</a>
         
       </nav>
 
@@ -161,6 +166,39 @@
             
   <div class="section" id="quickstart-guide">
 <span id="quickstart"></span><h1>Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permalink to this headline">¶</a></h1>
+<p>The Wio Link board designed by <a class="reference external" href="http://seeedstudio.com">SeeedStudio</a> makes it easier to connect sensors and other electronic devices to the board with the Grove interface. We define six grove <cite>ports</cite> numbered below:</p>
+<img alt="_images/ports.png" src="_images/ports.png" />
+<p>To get started with programming with MicroPython on the Wio Link board, first make sure that you have the firmware installed on the board following the <a class="reference internal" href="wiolink.html#wiolink"><span class="std std-ref">Setting up WioLink boards</span></a> guide. Then, in the EsPy IDE, connect to the board by clicking on the “Connect” button on the toolbar. Reset the board by pressing the “reset” button on the board, hitting <code class="docutils literal"><span class="pre">Ctrl+D</span></code>, or clicking the <code class="docutils literal"><span class="pre">Reset</span></code> button on the toolbar. You will then see a <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt in the terminal window at the bottom of the screen.</p>
+<p>Programming the electronic devices follows the following rules: first you need to create an <code class="docutils literal"><span class="pre">instance</span></code> of that device.  This can usually be done in three simple steps:</p>
+<div class="section" id="import-the-corresponding-class">
+<h2>1. Import the corresponding class<a class="headerlink" href="#import-the-corresponding-class" title="Permalink to this headline">¶</a></h2>
+<p>Let us use the <a class="reference internal" href="sensors.html#temp-sensor"><span class="std std-ref">Temperature/Humidity Sensor</span></a> connected to Port 3 as an example.  The syntax is follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sensors</span> <span class="k">import</span> <span class="n">TemperatureSensor</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">import</span></code> are Python reserved words. <code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code> is the name of the module, which is always in lowercase ending with an “s.” There are three modules available: <code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code>, <code class="xref py py-mod docutils literal"><span class="pre">actuators</span></code>, and <code class="xref py py-mod docutils literal"><span class="pre">displays</span></code>. Within each module you will find the classes available for your device. Refer to the table below to locate your class, which is always in <a class="reference external" href="https://en.wikipedia.org/wiki/Camel_case">CamelCase</a>.</p>
+</div>
+<div class="section" id="create-an-instance-referring-to-the-sensor">
+<h2>2. Create an instance referring to the sensor<a class="headerlink" href="#create-an-instance-referring-to-the-sensor" title="Permalink to this headline">¶</a></h2>
+<p>Create an instance of the <code class="docutils literal"><span class="pre">TemperatureSensor</span></code> class referring to the sensor at Port 3 like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each device has a default port, and if the sensor is already connected at its default port, then there is no need to specify port number. There might be additional arguments/parameters when creating the instance. Please refer to the <a class="reference internal" href="api.html#api"><span class="std std-ref">API Reference</span></a> for more information.</p>
+</div>
+<div class="section" id="interact-with-the-devices-using-the-instances">
+<h2>3. Interact with the devices using the instances<a class="headerlink" href="#interact-with-the-devices-using-the-instances" title="Permalink to this headline">¶</a></h2>
+<p>Each class offers a set of functionalities for interacting with the devices. In this case, the <code class="docutils literal"><span class="pre">TemperatureSensor</span></code> class offers <code class="docutils literal"><span class="pre">TemperatureSensor.get_temperature()</span></code> and <code class="docutils literal"><span class="pre">TemperatureSensor.get_humidity()</span></code> methods. To use these methods, simply use the <strong>dot notation</strong> to access the methods:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span><span class="o">.</span><span class="n">get_humidity</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Please refer to the <a class="reference internal" href="api.html#api"><span class="std std-ref">API Reference</span></a> for more information on how to use these classes.</p>
+</div>
 </div>
 
 

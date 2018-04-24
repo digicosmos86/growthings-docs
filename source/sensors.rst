@@ -3,8 +3,14 @@
 
 The :mod:`sensors` module provides a collection of classes to interact with sensors, such as temperature, light, and soil moisture sensor.
 
+.. _temp_sensor:
+
 Temperature/Humidity Sensor
 ------------------------------
+
+.. image:: https://media.digikey.com/Photos/Seeed%20Technology%20Ltd/101020011_sml.JPG
+    :width: 200px
+    :height: 200px
 
 .. class:: sensors.TemperatureSensor(port[=3])
 
@@ -22,9 +28,9 @@ Temperature/Humidity Sensor
 
         Returns the relative humidity in percentage.
 
-    .. method:: TemperatureSensor.show_data(screen)
+    .. method:: TemperatureSensor.show_data(screen, line)
 
-        Shows the temperature (in Fahrenheit) and relative humidity on the specified screen object.
+        Shows the temperature (in Fahrenheit) and relative humidity on the specified ``screen`` object on the specified ``line``.
 
 Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -37,6 +43,15 @@ Example
     t.get_temperature() # returns the Fahrenheit value
     t.get_temperature(True) # returns the Celsius value
     t.get_humidity() # returns the humidity value
+
+.. _temp_sensor_pro:
+
+Temperature/Humidity Sensor Pro
+----------------------------------
+
+.. image:: https://static.generation-robots.com/3637-large_default/grove-temperature-and-humidity-sensor-pro.jpg
+    :width: 200px
+    :height: 200px
 
 .. class:: sensors.TemperatureSensorPro(port[=3])
 
@@ -54,7 +69,7 @@ Example
 
         Returns the relative humidity in percentage.
 
-    .. method:: TemperatureSensor.show_data(screen, line)
+    .. method:: TemperatureSensorPro.show_data(screen, line)
 
         Shows the temperature (in Fahrenheit) and relative humidity on the specified ``screen`` object on the specified ``line``.
 
@@ -73,8 +88,14 @@ Example
     screen = OledScreen(6)
     t.show_data(screen, 1)
 
+.. _light_sensor:
+
 Light Sensor
 ------------------------------
+
+.. image:: https://raw.githubusercontent.com/SeeedDocument/Grove-Digital_Light_Sensor/master/img/Digital_Light_Sensor.jpg
+    :width: 200px
+    :height: 200px
 
 .. class:: sensors.LightSensor(port[=6], address[=0x29])
 
@@ -120,10 +141,16 @@ Example
 
         time.sleep(20) # wait for 20 seconds
 
+.. _moisture_sensor:
+
 Moisture Sensor
 ------------------------------
 
-.. class:: MoistureSensor(port[=4])
+.. image:: https://github.com/SeeedDocument/Grove_Moisture_Sensor/raw/master/images/Moisture_sensor_.jpg
+    :width: 200px
+    :height: 200px
+
+.. class:: sensors.MoistureSensor(port[=4])
 
     Allows reading moisture values from the Grove Moisture Sensor. The ``port`` parameter cannot be any other number than 4, because the sensor is analog.
 
@@ -135,6 +162,6 @@ Moisture Sensor
 
             Because the moisture sensor is analog, the values of the sensor readings might vary from case to case.  It is a good idea to calibrate the sensor by experimenting on the soil.
 
-    .. method:: LightSensor.show_data(screen, line)
+    .. method:: MoistureSensor.show_data(screen, line)
 
         Shows the raw moisture reading on the specified ``screen`` object on the specified ``line``.

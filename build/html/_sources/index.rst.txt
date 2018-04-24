@@ -12,7 +12,9 @@ If you are here for the first time and looking to get started on building your s
 
 If you are looking for information on how start programming the electronics, please go to the :ref:`quickstart` page.
 
-If you are trying to find out how to program a certain device, please click on the corresponding image below.
+If you are trying to find out how to program a certain device, please click on the names of the sensors below the corresponding image in the table below.
+
+.. include:: table.rst
 
 .. toctree::
    :maxdepth: 3

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sensors &mdash; Growthings 0.1 documentation</title>
+  <title>sensors - Working with Sensors &mdash; GrowThings 0.1 documentation</title>
   
 
   
@@ -35,9 +35,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Growthings 0.1 documentation" href="index.html"/>
+    <link rel="top" title="GrowThings 0.1 documentation" href="index.html"/>
         <link rel="up" title="API Reference" href="api.html"/>
-        <link rel="next" title="Actuators" href="actuators.html"/>
+        <link rel="next" title="actuators - Working with Actuators" href="actuators.html"/>
         <link rel="prev" title="API Reference" href="api.html"/> 
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Growthings
+            <a href="index.html" class="icon icon-home"> GrowThings
           
 
           
@@ -97,19 +97,21 @@
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Quickstart Guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">API Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensors</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal"><span class="pre">sensors</span></code> - Working with Sensors</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#temperature-humidity-sensor">Temperature/Humidity Sensor</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-humidity-sensor-pro">Temperature/Humidity Sensor Pro</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#light-sensor">Light Sensor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#moisture-sensor">Moisture Sensor</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="actuators.html">Actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actuators.html"><code class="docutils literal"><span class="pre">actuators</span></code> - Working with Actuators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="displays.html"><code class="docutils literal"><span class="pre">displays</span></code> - Working with Screens and LEDs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="iot.html">IoT modules</a></li>
 </ul>
 </li>
@@ -127,7 +129,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Growthings</a>
+          <a href="index.html">GrowThings</a>
         
       </nav>
 
@@ -159,7 +161,7 @@
         
           <li><a href="api.html">API Reference</a> &raquo;</li>
         
-      <li>Sensors</li>
+      <li><code class="docutils literal"><span class="pre">sensors</span></code> - Working with Sensors</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -178,10 +180,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sensors">
-<h1>Sensors<a class="headerlink" href="#sensors" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sensors-working-with-sensors">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code> - Working with Sensors<a class="headerlink" href="#sensors-working-with-sensors" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code> module provides a collection of classes to interact with sensors, such as temperature, light, and soil moisture sensor.</p>
 <div class="section" id="temperature-humidity-sensor">
-<h2>Temperature/Humidity Sensor<a class="headerlink" href="#temperature-humidity-sensor" title="Permalink to this headline">¶</a></h2>
+<span id="temp-sensor"></span><h2>Temperature/Humidity Sensor<a class="headerlink" href="#temperature-humidity-sensor" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="https://media.digikey.com/Photos/Seeed%20Technology%20Ltd/101020011_sml.JPG"><img alt="https://media.digikey.com/Photos/Seeed%20Technology%20Ltd/101020011_sml.JPG" src="https://media.digikey.com/Photos/Seeed%20Technology%20Ltd/101020011_sml.JPG" style="width: 200px; height: 200px;" /></a>
 <dl class="class">
 <dt id="sensors.TemperatureSensor">
 <em class="property">class </em><code class="descclassname">sensors.</code><code class="descname">TemperatureSensor</code><span class="sig-paren">(</span><em>port[=3]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensor" title="Permalink to this definition">¶</a></dt>
@@ -202,6 +206,12 @@
 <dd><p>Returns the relative humidity in percentage.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="sensors.TemperatureSensor.TemperatureSensor.show_data">
+<code class="descclassname">TemperatureSensor.</code><code class="descname">show_data</code><span class="sig-paren">(</span><em>screen</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensor.TemperatureSensor.show_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the temperature (in Fahrenheit) and relative humidity on the specified <code class="docutils literal"><span class="pre">screen</span></code> object on the specified <code class="docutils literal"><span class="pre">line</span></code>.</p>
+</dd></dl>
+
 </dd></dl>
 
 <div class="section" id="example">
@@ -214,6 +224,11 @@
 <span class="n">t</span><span class="o">.</span><span class="n">get_humidity</span><span class="p">()</span> <span class="c1"># returns the humidity value</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="temperature-humidity-sensor-pro">
+<span id="temp-sensor-pro"></span><h2>Temperature/Humidity Sensor Pro<a class="headerlink" href="#temperature-humidity-sensor-pro" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="https://static.generation-robots.com/3637-large_default/grove-temperature-and-humidity-sensor-pro.jpg"><img alt="https://static.generation-robots.com/3637-large_default/grove-temperature-and-humidity-sensor-pro.jpg" src="https://static.generation-robots.com/3637-large_default/grove-temperature-and-humidity-sensor-pro.jpg" style="width: 200px; height: 200px;" /></a>
 <dl class="class">
 <dt id="sensors.TemperatureSensorPro">
 <em class="property">class </em><code class="descclassname">sensors.</code><code class="descname">TemperatureSensorPro</code><span class="sig-paren">(</span><em>port[=3]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensorPro" title="Permalink to this definition">¶</a></dt>
@@ -234,6 +249,12 @@
 <dd><p>Returns the relative humidity in percentage.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="sensors.TemperatureSensorPro.TemperatureSensorPro.show_data">
+<code class="descclassname">TemperatureSensorPro.</code><code class="descname">show_data</code><span class="sig-paren">(</span><em>screen</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.TemperatureSensorPro.TemperatureSensorPro.show_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the temperature (in Fahrenheit) and relative humidity on the specified <code class="docutils literal"><span class="pre">screen</span></code> object on the specified <code class="docutils literal"><span class="pre">line</span></code>.</p>
+</dd></dl>
+
 </dd></dl>
 
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sensors</span> <span class="kn">import</span> <span class="n">TemperatureSensorPro</span>
@@ -242,12 +263,18 @@
 <span class="n">t</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">()</span> <span class="c1"># returns the Fahrenheit value</span>
 <span class="n">t</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="c1"># returns the Celsius value</span>
 <span class="n">t</span><span class="o">.</span><span class="n">get_humidity</span><span class="p">()</span> <span class="c1"># returns the humidity value</span>
+
+<span class="c1"># shows temperature/humidity data on the oled screen</span>
+<span class="kn">from</span> <span class="nn">displays</span> <span class="kn">import</span> <span class="n">OledScreen</span>
+
+<span class="n">screen</span> <span class="o">=</span> <span class="n">OledScreen</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">show_data</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="light-sensor">
-<h2>Light Sensor<a class="headerlink" href="#light-sensor" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Light Sensor<a class="headerlink" href="#light-sensor" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/SeeedDocument/Grove-Digital_Light_Sensor/master/img/Digital_Light_Sensor.jpg"><img alt="https://raw.githubusercontent.com/SeeedDocument/Grove-Digital_Light_Sensor/master/img/Digital_Light_Sensor.jpg" src="https://raw.githubusercontent.com/SeeedDocument/Grove-Digital_Light_Sensor/master/img/Digital_Light_Sensor.jpg" style="width: 200px; height: 200px;" /></a>
 <dl class="class">
 <dt id="sensors.LightSensor">
 <em class="property">class </em><code class="descclassname">sensors.</code><code class="descname">LightSensor</code><span class="sig-paren">(</span><em>port[=6], address[=0x29]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.LightSensor" title="Permalink to this definition">¶</a></dt>
@@ -270,14 +297,22 @@
 </div>
 </dd></dl>
 
+<dl class="method">
+<dt id="sensors.LightSensor.LightSensor.show_data">
+<code class="descclassname">LightSensor.</code><code class="descname">show_data</code><span class="sig-paren">(</span><em>screen</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.LightSensor.LightSensor.show_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the light intensity reading in lux on the specified <code class="docutils literal"><span class="pre">screen</span></code> object on the specified <code class="docutils literal"><span class="pre">line</span></code>.</p>
 </dd></dl>
 
-<div class="section" id="id1">
-<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</dd></dl>
+
+<div class="section" id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># The following code reads light value every 5 seconds,</span>
 <span class="c1"># and if it&#39;s too dark (lux &lt; 100), prints a warning message</span>
 
 <span class="kn">from</span> <span class="nn">sensors</span> <span class="kn">import</span> <span class="n">LightSensor</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
 <span class="n">l</span> <span class="o">=</span> <span class="n">LightSensor</span><span class="p">()</span>
 
 <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
@@ -285,24 +320,33 @@
 
     <span class="k">if</span> <span class="n">lux</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Too Dark!&quot;</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># wait for 20 seconds</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="moisture-sensor">
-<h2>Moisture Sensor<a class="headerlink" href="#moisture-sensor" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Moisture Sensor<a class="headerlink" href="#moisture-sensor" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="https://github.com/SeeedDocument/Grove_Moisture_Sensor/raw/master/images/Moisture_sensor_.jpg"><img alt="https://github.com/SeeedDocument/Grove_Moisture_Sensor/raw/master/images/Moisture_sensor_.jpg" src="https://github.com/SeeedDocument/Grove_Moisture_Sensor/raw/master/images/Moisture_sensor_.jpg" style="width: 200px; height: 200px;" /></a>
 <dl class="class">
-<dt id="MoistureSensor">
-<em class="property">class </em><code class="descname">MoistureSensor</code><span class="sig-paren">(</span><em>port[=4]</em><span class="sig-paren">)</span><a class="headerlink" href="#MoistureSensor" title="Permalink to this definition">¶</a></dt>
+<dt id="sensors.MoistureSensor">
+<em class="property">class </em><code class="descclassname">sensors.</code><code class="descname">MoistureSensor</code><span class="sig-paren">(</span><em>port[=4]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.MoistureSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Allows reading moisture values from the Grove Moisture Sensor. The <code class="docutils literal"><span class="pre">port</span></code> parameter cannot be any other number than 4, because the sensor is analog.</p>
 <dl class="method">
-<dt id="MoistureSensor.get_moisture">
-<code class="descname">get_moisture</code><span class="sig-paren">(</span><em>port[=4]</em><span class="sig-paren">)</span><a class="headerlink" href="#MoistureSensor.get_moisture" title="Permalink to this definition">¶</a></dt>
+<dt id="sensors.MoistureSensor.MoistureSensor.get_moisture">
+<code class="descclassname">MoistureSensor.</code><code class="descname">get_moisture</code><span class="sig-paren">(</span><em>port[=4]</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.MoistureSensor.MoistureSensor.get_moisture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the raw moisture reading.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Because the moisture sensor is analog, the values of the sensor readings might vary from case to case.  It is a good idea to calibrate the sensor by experimenting on the soil.</p>
 </div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensors.MoistureSensor.MoistureSensor.show_data">
+<code class="descclassname">MoistureSensor.</code><code class="descname">show_data</code><span class="sig-paren">(</span><em>screen</em>, <em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#sensors.MoistureSensor.MoistureSensor.show_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the raw moisture reading on the specified <code class="docutils literal"><span class="pre">screen</span></code> object on the specified <code class="docutils literal"><span class="pre">line</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -320,7 +364,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="actuators.html" class="btn btn-neutral float-right" title="Actuators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="actuators.html" class="btn btn-neutral float-right" title="actuators - Working with Actuators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="api.html" class="btn btn-neutral" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

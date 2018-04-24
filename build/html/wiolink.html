@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up WioLink boards &mdash; Growthings 0.1 documentation</title>
+  <title>Setting up WioLink boards &mdash; GrowThings 0.1 documentation</title>
   
 
   
@@ -35,9 +35,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Growthings 0.1 documentation" href="index.html"/>
+    <link rel="top" title="GrowThings 0.1 documentation" href="index.html"/>
         <link rel="up" title="Installation" href="install.html"/>
-        <link rel="next" title="Setting up Raspberry Pi Zero W" href="raspi.html"/>
+        <link rel="next" title="Setting up the Raspberry Pi Zero W" href="raspi.html"/>
         <link rel="prev" title="Installation" href="install.html"/> 
 
   
@@ -57,7 +57,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Growthings
+            <a href="index.html" class="icon icon-home"> GrowThings
           
 
           
@@ -96,13 +96,20 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="install.html">Installation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up WioLink boards</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#downloading-micropython-firmware">Downloading MicroPython Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system-requirement">System Requirement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-espy-ide">Downloading EsPy IDE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#flashing-micropython-firmware">Flashing MicroPython Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloading-micropython-firmware">Downloading MicroPython Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flashing-micropython-firmware">Flashing MicroPython Firmware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#download-esptool-package">1. Download <code class="docutils literal"><span class="pre">esptool</span></code> package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-pyserial-package">2. Install <code class="docutils literal"><span class="pre">PySerial</span></code> package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put-the-wiolink-board-to-flash-mode-and-connect-it-to-the-computer">3. Put the WioLink board to Flash mode and connect it to the computer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flash-the-firmware">4. Flash the firmware</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-installation">Testing Installation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="raspi.html">Setting up Raspberry Pi Zero W</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raspi.html">Setting up the Raspberry Pi Zero W</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guide.html">Quickstart Guide</a></li>
@@ -121,7 +128,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Growthings</a>
+          <a href="index.html">GrowThings</a>
         
       </nav>
 
@@ -173,18 +180,52 @@
            <div itemprop="articleBody">
             
   <div class="section" id="setting-up-wiolink-boards">
-<h1>Setting up WioLink boards<a class="headerlink" href="#setting-up-wiolink-boards" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="downloading-micropython-firmware">
-<h2>Downloading MicroPython Firmware<a class="headerlink" href="#downloading-micropython-firmware" title="Permalink to this headline">¶</a></h2>
+<span id="wiolink"></span><h1>Setting up WioLink boards<a class="headerlink" href="#setting-up-wiolink-boards" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/ports.png" src="_images/ports.png" />
+<div class="section" id="system-requirement">
+<h2>System Requirement<a class="headerlink" href="#system-requirement" title="Permalink to this headline">¶</a></h2>
+<p>We recommend Windows PCs for development because the excellent <cite>EsPy</cite> integrated development environment (IDE) runs only on Windows. If you are running MacOS or Linux operating systems, there are other IDEs available, such as <a class="reference external" href="https://legacy.gitbook.com/book/dfrobot/upycraft/details">uPyCraft</a> (for Windows and Mac) and <a class="reference external" href="https://github.com/4refr0nt/ESPlorer">ESPlorer</a> (written in Java, runs on all platforms), but they do not offer as comprehensive functionalities as does <cite>EsPy</cite>, such as a file system viewer that allows you to see the files on your WioLink board.</p>
+<p>In order to run EsPy, make sure you have the following installed:</p>
+<ul class="simple">
+<li>Microsoft .net Framework (already installed if you have Windows 10) (<a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">Download</a>)</li>
+<li>Python 3.5+ (<a class="reference external" href="https://www.python.org/downloads/">Download</a>)</li>
+</ul>
 </div>
 <div class="section" id="downloading-espy-ide">
 <h2>Downloading EsPy IDE<a class="headerlink" href="#downloading-espy-ide" title="Permalink to this headline">¶</a></h2>
+<p>Go to <a class="reference external" href="https://github.com/jungervin/EsPy/tree/master/EsPy/Release">this page</a> and download the latest version of EsPy (1.0.0.12 as of Apr. 23, 2018). You might need <a class="reference external" href="https://www.7-zip.org/">7-Zip</a> to work with the .7z archives. You can put the extracted folder anywhere in your system.</p>
+</div>
+<div class="section" id="downloading-micropython-firmware">
+<h2>Downloading MicroPython Firmware<a class="headerlink" href="#downloading-micropython-firmware" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin">Click here</a> to download the MicroPython firmware</p>
 </div>
 <div class="section" id="flashing-micropython-firmware">
 <h2>Flashing MicroPython Firmware<a class="headerlink" href="#flashing-micropython-firmware" title="Permalink to this headline">¶</a></h2>
+<p>If you are using the <cite>EsPy</cite> IDE, you can use it to flash the downloaded firmware to the WioLink board with the following steps:</p>
+<div class="section" id="download-esptool-package">
+<h3>1. Download <code class="xref py py-mod docutils literal"><span class="pre">esptool</span></code> package<a class="headerlink" href="#download-esptool-package" title="Permalink to this headline">¶</a></h3>
+<p>Go to <a class="reference external" href="https://github.com/espressif/esptool">this page</a> and click on the green “Clone or Download” button, and choose “Download ZIP”. Extract the downloaded zip file to a folder in your system.</p>
+<img alt="https://sebastiansauer.github.io/images/2016-10-12/download_repo.png" src="https://sebastiansauer.github.io/images/2016-10-12/download_repo.png" />
+</div>
+<div class="section" id="install-pyserial-package">
+<h3>2. Install <code class="xref py py-mod docutils literal"><span class="pre">PySerial</span></code> package<a class="headerlink" href="#install-pyserial-package" title="Permalink to this headline">¶</a></h3>
+<p>Press <cite>Win+R</cite> (Press <cite>Windows</cite> key and <cite>R</cite> key at the same time). In the “Run…” dialog box that pops up, type cmd, and hit enter. In the command console window that shows up, run <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyserial</span></code> command to install the <code class="xref py py-mod docutils literal"><span class="pre">PySerial</span></code> package, which :mod:<code class="docutils literal"><span class="pre">esptool</span></code> requires.</p>
+</div>
+<div class="section" id="put-the-wiolink-board-to-flash-mode-and-connect-it-to-the-computer">
+<h3>3. Put the WioLink board to Flash mode and connect it to the computer<a class="headerlink" href="#put-the-wiolink-board-to-flash-mode-and-connect-it-to-the-computer" title="Permalink to this headline">¶</a></h3>
+<p>Install the CP2012 driver for your system <a class="reference external" href="https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers">here</a>. Hold the config button on the WioLink board and connect it to your computer.</p>
+</div>
+<div class="section" id="flash-the-firmware">
+<h3>4. Flash the firmware<a class="headerlink" href="#flash-the-firmware" title="Permalink to this headline">¶</a></h3>
+<p>Open the EsPy program. First, go to “Device”-&gt;”Ports”-&gt;”COMx” where <code class="docutils literal"><span class="pre">x</span></code> could be any number. Make sure the <code class="docutils literal"><span class="pre">COMx</span></code> is selected. Then, go to “Device”-&gt;’EspTool…”.</p>
+<p>In the Dialog that opens subsequently (shown below), make sure “Serial Port” is the one that you saw in the “Ports” menu. Leave “Baud Rate” and “Python.exe” as default. Use the “..” button on the same line as “esptool.py” to find the <code class="docutils literal"><span class="pre">esptool.py</span></code> in the esptool folder that you have just extracted . Use the “..” button on the same line as “firmware.bin” to locate the firmware file that you have just downloaded. Leave everything else to default values.</p>
+<p>Click the “1. Erase” button first.  After the old firmware is successfully erased, flash the new firmware by clicking the “2. Write” button.</p>
+<img alt="https://raw.githubusercontent.com/jungervin/EsPy/master/EsPy/Helps/images/esptool.png" src="https://raw.githubusercontent.com/jungervin/EsPy/master/EsPy/Helps/images/esptool.png" />
+</div>
 </div>
 <div class="section" id="testing-installation">
 <h2>Testing Installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h2>
+<p>Click on the “Reset” button on the board to reset the board. If the red LED comes on, then you have flashed your firmware correctly. If not, repeat the 3rd and 4th steps above.</p>
 </div>
 </div>
 
@@ -198,7 +239,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="raspi.html" class="btn btn-neutral float-right" title="Setting up Raspberry Pi Zero W" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="raspi.html" class="btn btn-neutral float-right" title="Setting up the Raspberry Pi Zero W" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="install.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
