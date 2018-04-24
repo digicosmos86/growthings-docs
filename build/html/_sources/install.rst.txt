@@ -9,3 +9,4 @@ Installation
 
    wiolink
    raspi
+   assemble

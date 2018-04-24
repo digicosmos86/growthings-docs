@@ -30,7 +30,7 @@ Temperature/Humidity Sensor
 
     .. method:: TemperatureSensor.show_data(screen, line)
 
-        Shows the temperature (in Fahrenheit) and relative humidity on the specified ``screen`` object on the specified ``line``.
+        Shows the temperature (in Fahrenheit) and relative humidity on the specified ``screen`` object on the specified ``line``. Also returns a tuple of the same temperature in Fahrenheit and relative humidity to avoid repeated readings on the sensor.
 
 Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,7 +71,7 @@ Temperature/Humidity Sensor Pro
 
     .. method:: TemperatureSensorPro.show_data(screen, line)
 
-        Shows the temperature (in Fahrenheit) and relative humidity on the specified ``screen`` object on the specified ``line``.
+        Shows the temperature (in Fahrenheit) and relative humidity on the specified ``screen`` object on the specified ``line``. Also returns a tuple of the same temperature in Fahrenheit and relative humidity to avoid repeated readings on the sensor.
 
 .. code-block:: python
 
@@ -118,7 +118,7 @@ Light Sensor
 
     .. method:: LightSensor.show_data(screen, line)
 
-        Shows the light intensity reading in lux on the specified ``screen`` object on the specified ``line``.
+        Shows the light intensity reading in lux on the specified ``screen`` object on the specified ``line``. Also returns the same lux reading to avoid repeated reading on the sensor.
 
 Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -164,4 +164,4 @@ Moisture Sensor
 
     .. method:: MoistureSensor.show_data(screen, line)
 
-        Shows the raw moisture reading on the specified ``screen`` object on the specified ``line``.
+        Shows the raw moisture reading on the specified ``screen`` object on the specified ``line``.  Also returns the same raw moisture reading to avoid repeated reading on the sensor.
