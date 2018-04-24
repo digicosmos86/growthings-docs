@@ -1,22 +1,33 @@
-+------------------------+--------------------------------+---------------------------+
-|  Sensors               |  Actuators                     |  Displays                 |
-+========================+================================+===========================+
-| |temp_sensor|          | |servo|                        | |oled|                    |
-+------------------------+--------------------------------+---------------------------+
-| :ref:`temp_sensor`     | :ref:`servo`                   | :ref:`oled`               |
-+------------------------+--------------------------------+---------------------------+
-| |temp_sensor_pro|      | |relay|                        | |led|                     |
-+------------------------+--------------------------------+---------------------------+
-| :ref:`temp_sensor_pro` | :ref:`relay`                   | :ref:`led`                |
-+------------------------+--------------------------------+---------------------------+
-| |light_sensor|         | |button|                       | |grow_light|              |
-+------------------------+--------------------------------+---------------------------+
-| :ref:`light_sensor`    | :ref:`button`                  | :ref:`grow_light`         |
-+------------------------+--------------------------------+---------------------------+
-| |moisture_sensor|      |                                |                           |
-+------------------------+--------------------------------+---------------------------+
-| :ref:`moisture_sensor` |                                |                           |
-+------------------------+--------------------------------+---------------------------+
+.. list-table:: Devices Supported:
+    :align: center
+
+    * - Sensors
+      - Actuators
+      - Displays
+    * - |temp_sensor|
+      - |servo|
+      - |oled|
+    * - :ref:`temp_sensor`
+      - :ref:`servo`
+      - :ref:`oled`
+    * - |temp_sensor_pro|
+      - |relay|
+      - |led|
+    * - :ref:`temp_sensor_pro`
+      - :ref:`relay`
+      - :ref:`led`
+    * - |light_sensor|
+      - |button|
+      - |grow_light|
+    * - :ref:`light_sensor`
+      - :ref:`button`
+      - :ref:`grow_light`
+    * - |moisture_sensor|
+      - 
+      - 
+    * - :ref:`moisture_sensor`
+      -
+      -
 
 .. |temp_sensor| image:: https://media.digikey.com/Photos/Seeed%20Technology%20Ltd/101020011_sml.JPG
     :width: 200px
