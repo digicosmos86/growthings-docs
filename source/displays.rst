@@ -36,7 +36,7 @@ OLED Screen
 
     .. method:: OledScreen.show_sensor_data(sensor, line)
 
-        Writes the data on the specified ``sensor`` to the specified ``line``.
+        Writes the data on the specified ``sensor`` to the specified ``line`` and returns the data readings from the sensor to avoid reading data repetitively.
 
 Example:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
