@@ -55,15 +55,10 @@ The EsPy IDE comes with an excellent GUI for flashing the firmware you have just
 1. Install the :mod:`esptool` package with :mod:`pip`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Press `Win+R` (Press `Windows` key and `R` key at the same time). In the "Run..." dialog box that pops up, type cmd, and hit enter. In the command console window that shows up, type the following command and hit enter:
+Press `Win+R` (Press `Windows` key and `R` key at the same time). In the "Run..." dialog box that pops up, type cmd, and hit enter. In the command console window that shows up, type ``pip install esptool`` and hit enter. This command will install :mod:`esptool` to your Python and all its dependencies.
 
 .. image:: https://www.isunshare.com/images/article/windows-8/hide-or-unhide-files-and-folders-with-command-prompt/input-cmd-and-click-ok.png
-
-.. code-block:: bash
-
-    pip install esptool
-
-That will install :mod:`esptool` to your Python and all its dependencies.
+    :width: 400px 
 
 .. tip:: ``pip`` not found?
 
