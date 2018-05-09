@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="GrowThings 0.1 documentation" href="index.html"/>
         <link rel="next" title="API Reference" href="api.html"/>
-        <link rel="prev" title="Setting up the Raspberry Pi Zero W" href="raspi.html"/> 
+        <link rel="prev" title="Assembling the Smart Greenhouse" href="assemble.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -95,9 +95,16 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart Guide</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#import-the-corresponding-class">1. Import the corresponding class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-an-instance-referring-to-the-sensor">2. Create an instance referring to the sensor</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#interact-with-the-devices-using-the-instances">3. Interact with the devices using the instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-for-the-smart-greenhouse">1. Hardware for the Smart Greenhouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-software-development-environment">2. The Software Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programming-the-wio-link-board-with-micropython">3. Programming the Wio Link board with MicroPython</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#device-programming-with-micropython">4. Device Programming with MicroPython</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import-the-corresponding-class">1. Import the corresponding class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-an-object-referring-to-the-sensor">2. Create an object referring to the sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interact-with-the-devices-using-the-objects">3. Interact with the devices using the objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-one-device-with-another">4. Control one device with another</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
@@ -166,38 +173,143 @@
             
   <div class="section" id="quickstart-guide">
 <span id="quickstart"></span><h1>Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permalink to this headline">¶</a></h1>
-<p>The Wio Link board designed by <a class="reference external" href="http://seeedstudio.com">SeeedStudio</a> makes it easier to connect sensors and other electronic devices to the board with the Grove interface. We define six grove <cite>ports</cite> numbered below:</p>
+<p>This guide assumes that you have the software environment already configured. If not, please follow the <a class="reference internal" href="wiolink.html#wiolink"><span class="std std-ref">Setting up WioLink boards</span></a> before proceeding.</p>
+<div class="section" id="hardware-for-the-smart-greenhouse">
+<h2>1. Hardware for the Smart Greenhouse<a class="headerlink" href="#hardware-for-the-smart-greenhouse" title="Permalink to this headline">¶</a></h2>
+<p>The red development board that we are using for building the GrowThings smart greenhouse is called the Wio Link board developed by <a class="reference external" href="http://seeedstudio.com">SeeedStudio</a>, a Chinese company that develops many electronic devices. The board is based on ESP8266, a $4 microcontroller chip with built-in WiFi for Internet of Things development. A microcontroller features a simpler structure than a microcomputer like Raspberry Pi. Therefore, they are typically smaller and less expensive than a microcomputer, but consumes far less energy. They do not require an operating system, which allows developers to communicate with hardware directly.</p>
 <img alt="_images/ports.png" src="_images/ports.png" />
-<p>To get started with programming with MicroPython on the Wio Link board, first make sure that you have the firmware installed on the board following the <a class="reference internal" href="wiolink.html#wiolink"><span class="std std-ref">Setting up WioLink boards</span></a> guide. Then, in the EsPy IDE, connect to the board by clicking on the “Connect” button on the toolbar. Reset the board by pressing the “reset” button on the board, hitting <code class="docutils literal"><span class="pre">Ctrl+D</span></code>, or clicking the <code class="docutils literal"><span class="pre">Reset</span></code> button on the toolbar. You will then see a <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt in the terminal window at the bottom of the screen.</p>
-<p>Programming the electronic devices follows the following rules: first you need to create an <code class="docutils literal"><span class="pre">instance</span></code> of that device.  This can usually be done in three simple steps:</p>
+<p><strong>MicroUSB and Battery Ports</strong>: The image above shows the Wio Link board. At the bottom of the board is a microUSB port used to connect the board to the computer. To the left of the microUSB port is the battery port. The Wio Link board can be powered through the microUSB port and a 3.7v rechargeable Li-Po battery. Like how most smartphones work, connecting the board to USB charges the battery.</p>
+<p><strong>Config and Reset Buttons</strong>: Two buttons lay on both sides of the board. These are the config button on the left, and the reset button on the right.  The reset button on the right is more often used, whose purpose is to restart the board.</p>
+<p><strong>LED Indicators</strong>: With the microUSB port facing down, this is the upright position for the board, as depicted in the picture above. There is a blue and a red LED on the top-left of the board. The former is the WiFi indicator and the latter the power indicator. Please ensure that the power LED is on when programming the board. Otherwise the board is not powered properly and some devices, such as the light sensor, might not function properly. There is also a green battery indicator showing the status of the rechargeable battery. It will blink if battery is not found, and remain on if battery is being charged.</p>
+<p><strong>Grove Ports</strong>: 6 grove ports can be found on both sides of the board. With the board in its upright position, these ports are numbered, from top to bottom and from left to right, ports 1 through 6. It is through these ports that the board is connected to other grove compatible devices. Please remember the numbers for these ports as we will need these numbers to tell the microcontroller which device is connected to which port.</p>
+</div>
+<div class="section" id="the-software-development-environment">
+<h2>2. The Software Development Environment<a class="headerlink" href="#the-software-development-environment" title="Permalink to this headline">¶</a></h2>
+<p>We are going to use the <strong>EsPy</strong> Integrated Development Environment (IDE) to program the Wio Link board. An IDE not only allows us to program the board, it also flashes the firmware and manages the files on the board. Please go to the EsPy folder (might be named <code class="docutils literal"><span class="pre">Release</span></code>), and run <code class="docutils literal"><span class="pre">EsPy.exe</span></code> (it is a good idea to create a desktop shortcut to it). The program looks like the following:</p>
+<img alt="_images/screenshot.png" src="_images/screenshot.png" />
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>If an error pops up and says .Net Framework is required or needs update, please follow the link below and install the latest version of the .Net Framework. EsPy is written in C# which requires .Net Framework runtime.</p>
+<p class="last"><a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">Microsoft .net Framework (Required for Windows 7, 8, 8.1, Optional for Windows 10)</a></p>
+</div>
+<p>Like most Windows applications, this program has a menu bar, a toolbar, a main scripting window, and a terminal window. at the bottom of the screen. These four rightmost buttons on the toolbar are very important (see below). They are <code class="docutils literal"><span class="pre">Connect</span></code>, <code class="docutils literal"><span class="pre">Disconnect</span></code>, <code class="docutils literal"><span class="pre">Soft</span> <span class="pre">Reset</span></code>, and <code class="docutils literal"><span class="pre">File</span> <span class="pre">Manager</span></code>. The terminal serves two functions. First, it communicates directly with the Wio Link board and monitors the status of the board. Second, it passes code to the board for it to execute. In other words, we can directly write code in the terminal, after the <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt, and when we hit enter, the code will be directly executed and we can see the results immediately.</p>
+<img alt="_images/toolbar.png" src="_images/toolbar.png" />
+<p>To get started with programming with MicroPython on the Wio Link board, first connect to the board to one of the USB ports on the computer. Then, go to <code class="docutils literal"><span class="pre">Device-&gt;Ports</span></code>, and make sure a COM port (which could be “COM” followed by any number) is selected:</p>
+<img alt="_images/menu_ports.png" src="_images/menu_ports.png" />
+<p>Next, click the <code class="docutils literal"><span class="pre">Connect</span></code> button on the toolbar. You will see this message in the terminal:</p>
+<img alt="_images/terminal_connect.png" src="_images/terminal_connect.png" />
+<p>Now, reset the board either by pressing the “reset” button on the board, hitting <code class="docutils literal"><span class="pre">Ctrl+D</span></code>, or clicking the <code class="docutils literal"><span class="pre">Soft</span> <span class="pre">Reset</span></code> button on the toolbar. You will then see a <code class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></code> prompt in the terminal window at the bottom of the screen:</p>
+<img alt="_images/terminal_ready.png" src="_images/terminal_ready.png" />
+<p>Congratulations! Your Wio Link board is ready to be programmed.</p>
+</div>
+<div class="section" id="programming-the-wio-link-board-with-micropython">
+<h2>3. Programming the Wio Link board with MicroPython<a class="headerlink" href="#programming-the-wio-link-board-with-micropython" title="Permalink to this headline">¶</a></h2>
+<p>The programming language that we are using to program the Wio Link board is called MicroPython, which is a subset of Python 3.5. It is a beginner-friendly yet powerful language.</p>
+<p>Now let’s program the Wio Link board. Remember that microcontrollers are computers too, so their basic function is to do math. You can write arbitrary math expressions in the terminal, hit enter, and the computer will do the calculation for you. The operators for addition, subtraction, multiplication, division, and exponentiation are <code class="docutils literal"><span class="pre">+</span></code>, <code class="docutils literal"><span class="pre">-</span></code>, <code class="docutils literal"><span class="pre">*</span></code>, <code class="docutils literal"><span class="pre">/</span></code>, and <code class="docutils literal"><span class="pre">**</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">124</span><span class="o">+</span><span class="mi">325</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">354</span> <span class="o">*</span>   <span class="mi">237</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1000</span> <span class="o">/</span><span class="mi">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">100</span><span class="o">**</span><span class="mi">100</span>
+</pre></div>
+</div>
+<p>Python can compute as large numbers as the memory would allow. Also, note that Python generally ignores spaces, so both <code class="docutils literal"><span class="pre">123+456</span></code> and <code class="docutils literal"><span class="pre">123</span> <span class="pre">+</span>&#160; <span class="pre">456</span></code> will work, but it’s a good idea to properly use spaces to improve the readability of the code.</p>
+<p>Can Python do square roots? Yes, but the <strong>base</strong> Python only supports basic operations. Therefore, we need some extra help in order to do more complicated math. Python has a built-in <strong>module</strong> called <code class="xref py py-mod docutils literal"><span class="pre">math</span></code> that provides additional math operations. All you need to do is to <strong>import</strong> the <strong>module</strong>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+<p>After importing the module, in order to call the functions within the module, you need to use the <strong>dot</strong> notation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">625</span><span class="p">)</span>
+<span class="go">25.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+<p>The dot notation here means call the <code class="docutils literal"><span class="pre">sqrt()</span></code> function within the <code class="xref py py-mod docutils literal"><span class="pre">math</span></code> module, so the Python knows where to look for the <code class="docutils literal"><span class="pre">sqrt()</span></code> function. A function in Python is very similar to functions in math. It has a name followed by a set of parentheses, similar to <code class="docutils literal"><span class="pre">f(x)</span></code> in maths. Function <strong>arguments</strong> are passed between the parentheses, and the function will do the operation and <strong>return</strong> a value, in this case, the square root of 625, which is 25.0. However, if you only write:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&gt;&gt;&gt; import math
+&gt;&gt;&gt; sqrt(625)
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+NameError: name &#39;sqrt&#39; is not defined
+</pre></div>
+</div>
+<p>Python will still not know where to look for it, and then report an error and complain that it cannot find the <code class="docutils literal"><span class="pre">sqrt()</span></code> function.  However, if you will frequently use the <code class="docutils literal"><span class="pre">sqrt()</span></code> function, there is a way to avoid typing <code class="docutils literal"><span class="pre">math</span></code> all the time:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">625</span><span class="p">)</span>
+<span class="go">25.0</span>
+</pre></div>
+</div>
+<p>Python modules are one of the most powerful features in Python. There are thousands of Python modules available, written by a vibrant community, which enables Python to do anything you can imagine. We will be using modules all the time.</p>
+</div>
+<div class="section" id="device-programming-with-micropython">
+<h2>4. Device Programming with MicroPython<a class="headerlink" href="#device-programming-with-micropython" title="Permalink to this headline">¶</a></h2>
+<p>Programming the electronic devices follows three simple steps:</p>
+<ol class="arabic simple">
+<li>Import the corresponding class for the device</li>
+<li>Create a virtual shortcut to the device</li>
+<li>Control the devices using the built in functions for that class</li>
+</ol>
 <div class="section" id="import-the-corresponding-class">
-<h2>1. Import the corresponding class<a class="headerlink" href="#import-the-corresponding-class" title="Permalink to this headline">¶</a></h2>
-<p>Let us use the <a class="reference internal" href="sensors.html#temp-sensor"><span class="std std-ref">Temperature/Humidity Sensor</span></a> connected to Port 3 as an example.  The syntax is follows:</p>
+<h3>1. Import the corresponding class<a class="headerlink" href="#import-the-corresponding-class" title="Permalink to this headline">¶</a></h3>
+<p>Let us use the <a class="reference internal" href="sensors.html#temp-sensor"><span class="std std-ref">Temperature/Humidity Sensor</span></a> connected to Port 3 as an example.  Type the following in the Terminal.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sensors</span> <span class="k">import</span> <span class="n">TemperatureSensor</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">from</span></code> and <code class="docutils literal"><span class="pre">import</span></code> are Python reserved words. <code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code> is the name of the module, which is always in lowercase ending with an “s.” There are three modules available: <code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code>, <code class="xref py py-mod docutils literal"><span class="pre">actuators</span></code>, and <code class="xref py py-mod docutils literal"><span class="pre">displays</span></code>. Within each module you will find the classes available for your device. Refer to the table below to locate your class, which is always in <a class="reference external" href="https://en.wikipedia.org/wiki/Camel_case">CamelCase</a>.</p>
+<p>Now you should be pretty familiar with <code class="docutils literal"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">Class</span></code> syntax. Here are a few rules to help you find the classes easily and prevent errors:</p>
+<p><code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code> is the name of the module, which is always in all lowercase ending with an “s.” There are three modules available: <code class="xref py py-mod docutils literal"><span class="pre">sensors</span></code>, <code class="xref py py-mod docutils literal"><span class="pre">actuators</span></code>, and <code class="xref py py-mod docutils literal"><span class="pre">displays</span></code>. Within each module you will find the classes available for your device. Refer to the table below to locate your class, which is always in <a class="reference external" href="https://en.wikipedia.org/wiki/Camel_case">CamelCase</a>. Python is a case sensitive language and it is important to make sure that you write the code with the correct case.</p>
+<p class="rubric">Optional: What is a class?</p>
+<p>In Object-Oriented Programming. A <strong>class</strong> is blueprint for creating <strong>objects</strong>. The following diagram explains the relationship between <strong>classes</strong> and <strong>objects</strong>.</p>
+<img alt="https://ds055uzetaobb.cloudfront.net/image_optimizer/722c82aff075a14313be7fa7463f7fedad151a0a.png" src="https://ds055uzetaobb.cloudfront.net/image_optimizer/722c82aff075a14313be7fa7463f7fedad151a0a.png" />
+<p>In this case, the TemperatureSensor is a class, and we know that all TemperatureSensors built this way behave in a certain way, but we need to create an object specifically for the specific one that is connected to Port 3. Therefore, we need the second step:</p>
 </div>
-<div class="section" id="create-an-instance-referring-to-the-sensor">
-<h2>2. Create an instance referring to the sensor<a class="headerlink" href="#create-an-instance-referring-to-the-sensor" title="Permalink to this headline">¶</a></h2>
-<p>Create an instance of the <code class="docutils literal"><span class="pre">TemperatureSensor</span></code> class referring to the sensor at Port 3 like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="section" id="create-an-object-referring-to-the-sensor">
+<h3>2. Create an object referring to the sensor<a class="headerlink" href="#create-an-object-referring-to-the-sensor" title="Permalink to this headline">¶</a></h3>
+<p>Create an object of the class <code class="docutils literal"><span class="pre">TemperatureSensor</span></code> referring to the sensor at Port 3 like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="n">Port</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Each device has a default port, and if the sensor is already connected at its default port, then there is no need to specify port number. There might be additional arguments/parameters when creating the instance. Please refer to the <a class="reference internal" href="api.html#api"><span class="std std-ref">API Reference</span></a> for more information.</p>
+<p>Now Python knows there is a temperature sensor connected at port 3. We have even given it a name <code class="docutils literal"><span class="pre">temp_sensor</span></code>. This is just an alias, or a nickname, for us to remember. Think of it as a shortcut. Next time we want to refer to the temperature sensor at port 3, we can use the name, and Python will know we want to communicate with the temperature sensor at port 3.</p>
 </div>
-<div class="section" id="interact-with-the-devices-using-the-instances">
-<h2>3. Interact with the devices using the instances<a class="headerlink" href="#interact-with-the-devices-using-the-instances" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="interact-with-the-devices-using-the-objects">
+<h3>3. Interact with the devices using the objects<a class="headerlink" href="#interact-with-the-devices-using-the-objects" title="Permalink to this headline">¶</a></h3>
 <p>Each class offers a set of functionalities for interacting with the devices. In this case, the <code class="docutils literal"><span class="pre">TemperatureSensor</span></code> class offers <code class="docutils literal"><span class="pre">TemperatureSensor.get_temperature()</span></code> and <code class="docutils literal"><span class="pre">TemperatureSensor.get_humidity()</span></code> methods. To use these methods, simply use the <strong>dot notation</strong> to access the methods:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">temp_sensor</span><span class="o">.</span><span class="n">get_humidity</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Please refer to the <a class="reference internal" href="api.html#api"><span class="std std-ref">API Reference</span></a> for more information on how to use these classes.</p>
+</div>
+<div class="section" id="control-one-device-with-another">
+<h3>4. Control one device with another<a class="headerlink" href="#control-one-device-with-another" title="Permalink to this headline">¶</a></h3>
+<p>Now connect a button to Port 1 and an LED strip to Port 2. Since now we need to write a more complicated program, we switch to scripting. Click <code class="docutils literal"><span class="pre">File-&gt;New-&gt;Python</span></code> to create a new Python script, or hit <code class="docutils literal"><span class="pre">Ctrl+N</span></code>. Name the new file as <code class="docutils literal"><span class="pre">test.py</span></code>:</p>
+<img alt="_images/new_file.png" src="_images/new_file.png" />
+<p>Initialize them with the following code. Note that the LED strip is a display and the button is an actuator.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># import classes</span>
+
+<span class="kn">from</span> <span class="nn">displays</span> <span class="kn">import</span> <span class="n">GrowLight</span>
+<span class="kn">from</span> <span class="nn">actuators</span> <span class="kn">import</span> <span class="n">Button</span>
+
+<span class="c1"># create shortcuts</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">GrowLight</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>          <span class="c1"># an infinite loop</span>
+    <span class="k">if</span> <span class="n">b</span><span class="o">.</span><span class="n">is_pressed</span><span class="p">:</span> <span class="c1"># determine if the button is pressed</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>      <span class="c1"># turns the led strip on if button is pressed</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">gl</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>     <span class="c1"># turns the led strip off if button not pressed</span>
+</pre></div>
+</div>
+<p>This simple program loops forever. It will constantly determine if the button is pressed, and turns the LED strip on if it is, and off if it is not.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">The pound or hashtag sign <code class="docutils literal"><span class="pre">#</span></code> indicates that the subsequent text on the same line is comments. Comments are used for programmers to communicate with themselves or other programmers what they are doing with the code. They are greyed out and Python will not consider them as part of the program.</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -214,7 +326,7 @@
         <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="raspi.html" class="btn btn-neutral" title="Setting up the Raspberry Pi Zero W" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="assemble.html" class="btn btn-neutral" title="Assembling the Smart Greenhouse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
