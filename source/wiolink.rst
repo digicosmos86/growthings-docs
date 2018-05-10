@@ -5,10 +5,28 @@ Setting up WioLink boards
 
 .. image:: ports.png
 
+The fastest way to set up a clean installed Windows 10 computer is to use the link below to download all software required for building a development environment. After downloading the self-extracting archive file, double-click to run it, and choose a location on your computer to keep your files (Desktop recommended). 
+
+* `Required software package (GrowThings.exe) <https://www.dropbox.com/s/p15tcmazbchyq3j/GrowThings.exe?dl=0>`_
+* `MicroPython Firmware for WioLink boards <https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin>`_
+
+Next, open the extracted folder, and do the following three things:
+
+1. Install the Driver for the Board (In the folder 1_CP210x_Windows_Drivers. You will most likely run CP210xVCPInstaller_x64.exe).
+2. If you only want to write programs in EsPy, then simply open EsPy folder and run EsPy.exe. No further step is needed. If you also want to use EsPy to flash the firmware, please follow Steps 3-5.
+3. Install Python 3.6. Make sure **"Add To PATH"** option is checked when prompted.
+4. Double click 3_pyserial.bat to install PySerial.
+5. Use the Second link above to download the firmware bin file and save it in the "GrowThings" folder.
+5. Open the EsPy program. Go to "Device"->"Ports"->"COMx" where ``x`` could be any number. Make sure the ``COMx`` is selected. Then, go to "Device"->'EspTool...". In the Dialog that opens subsequently (shown below), make sure "Serial Port" is the one that you saw in the "Ports" menu. Leave "Baud Rate", "Python.exe" as default. Use the "..." buttons to locate "esptool.py" and "firmware.bin". These two files should be in the "GrowThings" folder.
+6. Erase the firmware first, and click "Write" to write the firmware to the board.
+
+Fast Setup
+------------------------------------
+
 System Requirement
 ------------------------------------
 
-We recommend Windows PCs for development because the excellent `EsPy` integrated development environment (IDE) runs only on Windows. If you are running MacOS or Linux operating systems, there are other IDEs available, such as `uPyCraft <https://legacy.gitbook.com/book/dfrobot/upycraft/details>`_ (for Windows and Mac) and `ESPlorer <https://github.com/4refr0nt/ESPlorer>`_ (written in Java, runs on all platforms), but they do not offer as comprehensive functionalities as does `EsPy`, such as a file system viewer that allows you to see the files on your WioLink board.
+We recommend Windows PCs for development because the excellent `EsPy` integrated development environment (IDE) runs only on Windows. If you are running MacOS or Linux operating systems, there are other IDEs available, such as `uPyCraft <https://legacy.gitbook.com/book/dfrobot/upycraft/details>`_ (for Windows and Mac) and `ESPlorer <https://github.com/4refr0nt/ESPlorer>`_ (written in Java, runs on all platforms), but they do not offer as comprehensive functionalities as does `EsPy`, such as a file system viewer that allows you to see the files on your WioLink board. The `PyCharm IDE <https://www.jetbrains.com/pycharm/>`_ is an advanced commercial Python IDE that runs on all platforms. It has a plug-in that supports MicroPython. `You can read about this plug-in here <https://blog.jetbrains.com/pycharm/2018/01/micropython-plugin-for-pycharm/>`_. `Visual Studio Code <https://code.visualstudio.com/>`_ has an extension for MicroPython as well. 
 
 .. tip:: Organizing your downloaded files
 
@@ -45,7 +63,7 @@ Use the following link to download the custom MicroPython firmware for the WioLi
 
 .. rubric:: Download Links:
 
-* `Custom MicroPython Firmware for WioLink boards <https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin>`_
+* `MicroPython Firmware for WioLink boards <https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin>`_
 
 Flashing MicroPython Firmware
 ------------------------------------
