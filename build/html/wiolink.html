@@ -96,6 +96,10 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="install.html">Installation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up WioLink boards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fast-setup">Fast Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-guide">Detailed Guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirement">System Requirement</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-espy-ide">Downloading EsPy IDE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#downloading-micropython-firmware">Downloading MicroPython Firmware</a></li>
@@ -182,9 +186,31 @@
   <div class="section" id="setting-up-wiolink-boards">
 <span id="wiolink"></span><h1>Setting up WioLink boards<a class="headerlink" href="#setting-up-wiolink-boards" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/ports.png" src="_images/ports.png" />
+<p>We recommend that you set everything up by following the <a class="reference internal" href="#fast-setup">Fast Setup</a> guide. For more advanced users, please feel free to skip <a class="reference internal" href="#fast-setup">Fast Setup</a> guide, and download only the latest software needed for your system after reading the <a class="reference internal" href="#detailed-guide">Detailed Guide</a> that follows.</p>
+<div class="section" id="fast-setup">
+<h2>Fast Setup<a class="headerlink" href="#fast-setup" title="Permalink to this headline">¶</a></h2>
+<p>The fastest way to set up a clean installed Windows 10 computer is to use the link below to download all software required for building a development environment. After downloading the self-extracting archive file, double-click to run it, and choose a location on your computer to keep your files (Desktop recommended).</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.dropbox.com/s/p15tcmazbchyq3j/GrowThings.exe?dl=0">Required software package (GrowThings.exe)</a></li>
+<li><a class="reference external" href="https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin">MicroPython Firmware for WioLink boards</a></li>
+</ul>
+<p>Next, open the extracted folder, and do the following three things:</p>
+<ol class="arabic simple">
+<li>Install the Driver for the Board (In the folder 1_CP210x_Windows_Drivers. You will most likely run CP210xVCPInstaller_x64.exe).</li>
+<li>If you only want to write programs in EsPy, then simply open EsPy folder and run EsPy.exe. No further step is needed. If you also want to use EsPy to flash the firmware, please follow Steps 3-5.</li>
+<li>Install Python 3.6. Make sure <strong>“Add To PATH”</strong> option is checked when prompted.</li>
+<li>Double click <code class="docutils literal"><span class="pre">3_pyserial.bat</span></code> to install PySerial.</li>
+<li>Use the Second link above to download the firmware bin file and save it in the “GrowThings” folder. Open the EsPy program. Go to “Device”-&gt;”Ports”-&gt;”COMx” where <code class="docutils literal"><span class="pre">x</span></code> could be any number. Make sure the <code class="docutils literal"><span class="pre">COMx</span></code> is selected. Then, go to “Device”-&gt;’EspTool…”. In the Dialog that opens subsequently (shown below), make sure “Serial Port” is the one that you saw in the “Ports” menu. Leave “Baud Rate”, “Python.exe” as default. Use the “…” buttons to locate “esptool.py” and “firmware.bin”. These two files should be in the “GrowThings” folder.</li>
+<li>Erase the firmware first, and click “Write” to write the firmware to the board.</li>
+</ol>
+<p>—</p>
+</div>
+</div>
+<div class="section" id="detailed-guide">
+<h1>Detailed Guide<a class="headerlink" href="#detailed-guide" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="system-requirement">
 <h2>System Requirement<a class="headerlink" href="#system-requirement" title="Permalink to this headline">¶</a></h2>
-<p>We recommend Windows PCs for development because the excellent <cite>EsPy</cite> integrated development environment (IDE) runs only on Windows. If you are running MacOS or Linux operating systems, there are other IDEs available, such as <a class="reference external" href="https://legacy.gitbook.com/book/dfrobot/upycraft/details">uPyCraft</a> (for Windows and Mac) and <a class="reference external" href="https://github.com/4refr0nt/ESPlorer">ESPlorer</a> (written in Java, runs on all platforms), but they do not offer as comprehensive functionalities as does <cite>EsPy</cite>, such as a file system viewer that allows you to see the files on your WioLink board.</p>
+<p>We recommend Windows PCs for development because the excellent <cite>EsPy</cite> integrated development environment (IDE) runs only on Windows. If you are running MacOS or Linux operating systems, there are other IDEs available, such as <a class="reference external" href="https://legacy.gitbook.com/book/dfrobot/upycraft/details">uPyCraft</a> (for Windows and Mac) and <a class="reference external" href="https://github.com/4refr0nt/ESPlorer">ESPlorer</a> (written in Java, runs on all platforms), but they do not offer as comprehensive functionalities as does <cite>EsPy</cite>, such as a file system viewer that allows you to see the files on your WioLink board. The <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm IDE</a> is an advanced commercial Python IDE that runs on all platforms. It has a plug-in that supports MicroPython. <a class="reference external" href="https://blog.jetbrains.com/pycharm/2018/01/micropython-plugin-for-pycharm/">You can read about this plug-in here</a>. <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> has an extension for MicroPython as well.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p>Organizing your downloaded files</p>
@@ -218,7 +244,7 @@
 <p>Use the following link to download the custom MicroPython firmware for the WioLink boards.</p>
 <p class="rubric">Download Links:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin">Custom MicroPython Firmware for WioLink boards</a></li>
+<li><a class="reference external" href="https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin">MicroPython Firmware for WioLink boards</a></li>
 </ul>
 </div>
 <div class="section" id="flashing-micropython-firmware">
