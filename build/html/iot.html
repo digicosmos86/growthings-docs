@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>IoT modules &mdash; GrowThings 0.1 documentation</title>
+  <title>iot Connecting with Other Devices &mdash; GrowThings 0.1 documentation</title>
   
 
   
@@ -99,9 +99,15 @@
 <li class="toctree-l2"><a class="reference internal" href="sensors.html"><code class="docutils literal"><span class="pre">sensors</span></code> - Working with Sensors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="actuators.html"><code class="docutils literal"><span class="pre">actuators</span></code> - Working with Actuators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="displays.html"><code class="docutils literal"><span class="pre">displays</span></code> - Working with Screens and LEDs</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">IoT modules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#raspberry-pi">Raspberry Pi</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bc-server">BC Server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal"><span class="pre">iot</span></code> Connecting with Other Devices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wifi">WiFi</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#node-red">Node-RED</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Example:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -152,7 +158,7 @@
         
           <li><a href="api.html">API Reference</a> &raquo;</li>
         
-      <li>IoT modules</li>
+      <li><code class="docutils literal"><span class="pre">iot</span></code> Connecting with Other Devices</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -171,13 +177,94 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="iot-modules">
-<h1>IoT modules<a class="headerlink" href="#iot-modules" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="raspberry-pi">
-<h2>Raspberry Pi<a class="headerlink" href="#raspberry-pi" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="iot-connecting-with-other-devices">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">iot</span></code> Connecting with Other Devices<a class="headerlink" href="#iot-connecting-with-other-devices" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="xref py py-mod docutils literal"><span class="pre">iot</span></code> module provides a collection of classes to connect to WiFi and exchange data with other devices, such as Raspberry Pis.</p>
+<div class="section" id="wifi">
+<span id="id1"></span><h2>WiFi<a class="headerlink" href="#wifi" title="Permalink to this headline">¶</a></h2>
+<p>This class can be used to connect the Wio Link board to WiFi.</p>
+<dl class="class">
+<dt id="iot.WiFi">
+<em class="property">class </em><code class="descclassname">iot.</code><code class="descname">WiFi</code><span class="sig-paren">(</span><em>ssid</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#iot.WiFi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the WiFi <code class="docutils literal"><span class="pre">ssid</span></code> and <code class="docutils literal"><span class="pre">password</span></code>, so when the <code class="docutils literal"><span class="pre">connect()</span></code> method is called, the Wio Link board will connect to the specified WiFi <code class="docutils literal"><span class="pre">ssid</span></code> with the <code class="docutils literal"><span class="pre">password</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">After WiFi is successfully connected, the Wio Link board will attempt to access the same WiFi at each subsequent boot. You can click the “Soft Reset” button to get the terminal to work again.</p>
 </div>
-<div class="section" id="bc-server">
-<h2>BC Server<a class="headerlink" href="#bc-server" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="iot.WiFi.WiFi.connect">
+<code class="descclassname">WiFi.</code><code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#iot.WiFi.WiFi.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>When the <code class="docutils literal"><span class="pre">connect()</span></code> method is called, the Wio Link board will connect to the specified WiFi <code class="docutils literal"><span class="pre">ssid</span></code> with the <code class="docutils literal"><span class="pre">password</span></code> specified when object is created.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Connects to a WiFi access point</span>
+<span class="c1"># with SSID starbucks</span>
+<span class="c1"># and Password 12345678</span>
+
+<span class="kn">from</span> <span class="nn">iot</span> <span class="kn">import</span> <span class="n">WiFi</span>
+<span class="n">wifi</span> <span class="o">=</span> <span class="n">WiFi</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;starbucks&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;12345678&quot;</span><span class="p">)</span>
+<span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="node-red">
+<span id="nodered"></span><h2>Node-RED<a class="headerlink" href="#node-red" title="Permalink to this headline">¶</a></h2>
+<p>This class can be used to send data to any device that runs Node-RED, such as Raspberry Pis, or even a Node-RED instance running on the cloud, provided the IP address of the hosting machine is known.</p>
+<dl class="class">
+<dt id="iot.NodeRed">
+<em class="property">class </em><code class="descclassname">iot.</code><code class="descname">NodeRed</code><span class="sig-paren">(</span><em>ip</em><span class="optional">[</span>, <em>port=1880</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#iot.NodeRed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores the <code class="docutils literal"><span class="pre">ip</span></code> address of the machine running Node-RED. If Node-RED runs on a different <code class="docutils literal"><span class="pre">port</span></code> than <code class="docutils literal"><span class="pre">1880</span></code>, the <code class="docutils literal"><span class="pre">port</span></code> parameter can be used to specify the port.</p>
+<dl class="method">
+<dt id="iot.NodeRed.NodeRed.send_http">
+<code class="descclassname">NodeRed.</code><code class="descname">send_http</code><span class="sig-paren">(</span><em>url</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#iot.NodeRed.NodeRed.send_http" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the specified <code class="docutils literal"><span class="pre">data</span></code> to the http-in node in the Node-RED flow. the <code class="docutils literal"><span class="pre">url</span></code> parameter needs to be exactly the same as the <code class="docutils literal"><span class="pre">URL</span></code> field of the http-in node (shown below). <code class="docutils literal"><span class="pre">data</span></code> can either be a number, a string, or a dictionary.</p>
+<img alt="_images/node_red_http.png" src="_images/node_red_http.png" />
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="id2">
+<h3>Example:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Connects to a WiFi access point</span>
+<span class="c1"># with SSID starbucks</span>
+<span class="c1"># and Password 12345678</span>
+
+<span class="kn">from</span> <span class="nn">iot</span> <span class="kn">import</span> <span class="n">WiFi</span><span class="p">,</span> <span class="n">NodeRed</span>
+<span class="kn">from</span> <span class="nn">sensors</span> <span class="kn">import</span> <span class="n">TemperatureSensor</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">wifi</span> <span class="o">=</span> <span class="n">WiFi</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;starbucks&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;12345678&quot;</span><span class="p">)</span>
+<span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="c1"># Temperature Sensor is connected to Port 3</span>
+<span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">TemperatureSensor</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Node-RED is hosted on a machine with IP 192.168.1.123</span>
+<span class="c1"># It has a http in node configured with URL /test</span>
+
+<span class="n">node</span> <span class="o">=</span> <span class="n">NodeRed</span><span class="p">(</span><span class="n">ip</span><span class="o">=</span><span class="s2">&quot;192.168.1.123&quot;</span><span class="p">)</span>
+
+<span class="c1"># Sends temperature and humidity data to Node-RED every 10 seconds</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">get_temperature</span><span class="p">()</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">get_humidity</span><span class="p">()</span>
+
+    <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span>
+        <span class="s2">&quot;humidity&quot;</span><span class="p">:</span> <span class="n">h</span>
+    <span class="p">}</span>
+
+    <span class="n">node</span><span class="o">.</span><span class="n">send_http</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;/test&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data_dict</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
