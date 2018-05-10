@@ -96,20 +96,15 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="install.html">Installation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Setting up WioLink boards</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#fast-setup">Fast Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fast-guide">Fast Guide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-guide">Detailed Guide</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#system-requirement">System Requirement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-espy-ide">Downloading EsPy IDE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-micropython-firmware">Downloading MicroPython Firmware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flashing-micropython-firmware">Flashing MicroPython Firmware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-installation">Testing Installation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#detailed-guide">Detailed Guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#system-requirement">System Requirement</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#downloading-espy-ide">Downloading EsPy IDE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#downloading-micropython-firmware">Downloading MicroPython Firmware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#flashing-micropython-firmware">Flashing MicroPython Firmware</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#install-the-esptool-package-with-pip">1. Install the <code class="docutils literal"><span class="pre">esptool</span></code> package with <code class="docutils literal"><span class="pre">pip</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#put-the-wiolink-board-to-flash-mode-and-connect-it-to-the-computer">2. Put the WioLink board to Flash mode and connect it to the computer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#flash-the-firmware">3. Flash the firmware</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#testing-installation">Testing Installation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="raspi.html">Setting up the Raspberry Pi Zero W</a></li>
@@ -186,9 +181,9 @@
   <div class="section" id="setting-up-wiolink-boards">
 <span id="wiolink"></span><h1>Setting up WioLink boards<a class="headerlink" href="#setting-up-wiolink-boards" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/ports.png" src="_images/ports.png" />
-<p>We recommend that you set everything up by following the <a class="reference internal" href="#fast-setup">Fast Setup</a> guide. For more advanced users, please feel free to skip <a class="reference internal" href="#fast-setup">Fast Setup</a> guide, and download only the latest software needed for your system after reading the <a class="reference internal" href="#detailed-guide">Detailed Guide</a> that follows.</p>
-<div class="section" id="fast-setup">
-<h2>Fast Setup<a class="headerlink" href="#fast-setup" title="Permalink to this headline">¶</a></h2>
+<p>We recommend that you set everything up by following the <a class="reference internal" href="#fast-guide">Fast Guide</a>. For more advanced users, please feel free to skip <a class="reference internal" href="#fast-guide">Fast Guide</a>, and download only the latest software needed for your system after reading the <a class="reference internal" href="#detailed-guide">Detailed Guide</a> that follows.</p>
+<div class="section" id="fast-guide">
+<h2>Fast Guide<a class="headerlink" href="#fast-guide" title="Permalink to this headline">¶</a></h2>
 <p>The fastest way to set up a clean installed Windows 10 computer is to use the link below to download all software required for building a development environment. After downloading the self-extracting archive file, double-click to run it, and choose a location on your computer to keep your files (Desktop recommended).</p>
 <ul class="simple">
 <li><a class="reference external" href="https://www.dropbox.com/s/p15tcmazbchyq3j/GrowThings.exe?dl=0">Required software package (GrowThings.exe)</a></li>
@@ -203,13 +198,12 @@
 <li>Use the Second link above to download the firmware bin file and save it in the “GrowThings” folder. Open the EsPy program. Go to “Device”-&gt;”Ports”-&gt;”COMx” where <code class="docutils literal"><span class="pre">x</span></code> could be any number. Make sure the <code class="docutils literal"><span class="pre">COMx</span></code> is selected. Then, go to “Device”-&gt;’EspTool…”. In the Dialog that opens subsequently (shown below), make sure “Serial Port” is the one that you saw in the “Ports” menu. Leave “Baud Rate”, “Python.exe” as default. Use the “…” buttons to locate “esptool.py” and “firmware.bin”. These two files should be in the “GrowThings” folder.</li>
 <li>Erase the firmware first, and click “Write” to write the firmware to the board.</li>
 </ol>
-<p>—</p>
 </div>
-</div>
+<hr class="docutils" />
 <div class="section" id="detailed-guide">
-<h1>Detailed Guide<a class="headerlink" href="#detailed-guide" title="Permalink to this headline">¶</a></h1>
+<h2>Detailed Guide<a class="headerlink" href="#detailed-guide" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="system-requirement">
-<h2>System Requirement<a class="headerlink" href="#system-requirement" title="Permalink to this headline">¶</a></h2>
+<h3>System Requirement<a class="headerlink" href="#system-requirement" title="Permalink to this headline">¶</a></h3>
 <p>We recommend Windows PCs for development because the excellent <cite>EsPy</cite> integrated development environment (IDE) runs only on Windows. If you are running MacOS or Linux operating systems, there are other IDEs available, such as <a class="reference external" href="https://legacy.gitbook.com/book/dfrobot/upycraft/details">uPyCraft</a> (for Windows and Mac) and <a class="reference external" href="https://github.com/4refr0nt/ESPlorer">ESPlorer</a> (written in Java, runs on all platforms), but they do not offer as comprehensive functionalities as does <cite>EsPy</cite>, such as a file system viewer that allows you to see the files on your WioLink board. The <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm IDE</a> is an advanced commercial Python IDE that runs on all platforms. It has a plug-in that supports MicroPython. <a class="reference external" href="https://blog.jetbrains.com/pycharm/2018/01/micropython-plugin-for-pycharm/">You can read about this plug-in here</a>. <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> has an extension for MicroPython as well.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
@@ -232,7 +226,7 @@
 </div>
 </div>
 <div class="section" id="downloading-espy-ide">
-<h2>Downloading EsPy IDE<a class="headerlink" href="#downloading-espy-ide" title="Permalink to this headline">¶</a></h2>
+<h3>Downloading EsPy IDE<a class="headerlink" href="#downloading-espy-ide" title="Permalink to this headline">¶</a></h3>
 <p>Use the following link to download the latest version of EsPy (1.0.0.12 as of Apr. 23, 2018). The 7-Zip Archive Manager that you have just installed can be used to work with the downloaded 7z file. Double-click on the file and extract the “Release” folder to the “MicroPython” folder that you have just created. Feel free to rename the “Release” folder to “EsPy” if you wish.</p>
 <p class="rubric">Download Links:</p>
 <ul class="simple">
@@ -240,7 +234,7 @@
 </ul>
 </div>
 <div class="section" id="downloading-micropython-firmware">
-<h2>Downloading MicroPython Firmware<a class="headerlink" href="#downloading-micropython-firmware" title="Permalink to this headline">¶</a></h2>
+<h3>Downloading MicroPython Firmware<a class="headerlink" href="#downloading-micropython-firmware" title="Permalink to this headline">¶</a></h3>
 <p>Use the following link to download the custom MicroPython firmware for the WioLink boards.</p>
 <p class="rubric">Download Links:</p>
 <ul class="simple">
@@ -248,10 +242,10 @@
 </ul>
 </div>
 <div class="section" id="flashing-micropython-firmware">
-<h2>Flashing MicroPython Firmware<a class="headerlink" href="#flashing-micropython-firmware" title="Permalink to this headline">¶</a></h2>
+<h3>Flashing MicroPython Firmware<a class="headerlink" href="#flashing-micropython-firmware" title="Permalink to this headline">¶</a></h3>
 <p>The EsPy IDE comes with an excellent GUI for flashing the firmware you have just downloaded. You can use it to flash the downloaded firmware to the WioLink board with the following steps:</p>
 <div class="section" id="install-the-esptool-package-with-pip">
-<h3>1. Install the <code class="xref py py-mod docutils literal"><span class="pre">esptool</span></code> package with <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code><a class="headerlink" href="#install-the-esptool-package-with-pip" title="Permalink to this headline">¶</a></h3>
+<h4>1. Install the <code class="xref py py-mod docutils literal"><span class="pre">esptool</span></code> package with <code class="xref py py-mod docutils literal"><span class="pre">pip</span></code><a class="headerlink" href="#install-the-esptool-package-with-pip" title="Permalink to this headline">¶</a></h4>
 <p>Press <cite>Win+R</cite> (Press <cite>Windows</cite> key and <cite>R</cite> key at the same time). In the “Run…” dialog box that pops up, type cmd, and hit enter. In the command console window that shows up, type <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">esptool</span></code> and hit enter. This command will install <code class="xref py py-mod docutils literal"><span class="pre">esptool</span></code> to your Python and all its dependencies.</p>
 <a class="reference internal image-reference" href="https://www.isunshare.com/images/article/windows-8/hide-or-unhide-files-and-folders-with-command-prompt/input-cmd-and-click-ok.png"><img alt="https://www.isunshare.com/images/article/windows-8/hide-or-unhide-files-and-folders-with-command-prompt/input-cmd-and-click-ok.png" src="https://www.isunshare.com/images/article/windows-8/hide-or-unhide-files-and-folders-with-command-prompt/input-cmd-and-click-ok.png" style="width: 400px;" /></a>
 <div class="admonition tip">
@@ -262,7 +256,7 @@
 </div>
 </div>
 <div class="section" id="put-the-wiolink-board-to-flash-mode-and-connect-it-to-the-computer">
-<h3>2. Put the WioLink board to Flash mode and connect it to the computer<a class="headerlink" href="#put-the-wiolink-board-to-flash-mode-and-connect-it-to-the-computer" title="Permalink to this headline">¶</a></h3>
+<h4>2. Put the WioLink board to Flash mode and connect it to the computer<a class="headerlink" href="#put-the-wiolink-board-to-flash-mode-and-connect-it-to-the-computer" title="Permalink to this headline">¶</a></h4>
 <p>If you haven’t already, use the following link to install the CP2012 driver for your system. Next, hold the config button on the WioLink board (the one to the left of the MicroUSB port) and connect it to your computer.</p>
 <p class="rubric">Download Links:</p>
 <ul class="simple">
@@ -270,7 +264,7 @@
 </ul>
 </div>
 <div class="section" id="flash-the-firmware">
-<h3>3. Flash the firmware<a class="headerlink" href="#flash-the-firmware" title="Permalink to this headline">¶</a></h3>
+<h4>3. Flash the firmware<a class="headerlink" href="#flash-the-firmware" title="Permalink to this headline">¶</a></h4>
 <p>Open the EsPy program. It should be in a folder called “EsPy” or “Release” in the “MicroPython” folder on your desktop.</p>
 <p>Go to “Device”-&gt;”Ports”-&gt;”COMx” where <code class="docutils literal"><span class="pre">x</span></code> could be any number. Make sure the <code class="docutils literal"><span class="pre">COMx</span></code> is selected. Then, go to “Device”-&gt;’EspTool…”.</p>
 <p>In the Dialog that opens subsequently (shown below), make sure “Serial Port” is the one that you saw in the “Ports” menu. Leave “Baud Rate”, “Python.exe”, and “esptool.py” as default. Use the “..” button on the same line as “firmware.bin” to locate the firmware file (micropython-1.9.3-wiolink-clean.bin) that you have just downloaded. Leave everything else to default values.</p>
@@ -279,13 +273,14 @@
 </div>
 </div>
 <div class="section" id="testing-installation">
-<h2>Testing Installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h2>
+<h3>Testing Installation<a class="headerlink" href="#testing-installation" title="Permalink to this headline">¶</a></h3>
 <p>Close the EspTool dialog and click on the “Reset” button on the board to reset the board. Click the “Connect” button on the toolbar of EsPy. If you see something like:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>Press Ctrl+D to <span class="k">do</span> a software reset
 Press Ctrl+I to interrupt the current program
 </pre></div>
 </div>
 <p>Congratulations! You are ready to program your WioLink board.</p>
+</div>
 </div>
 </div>
 

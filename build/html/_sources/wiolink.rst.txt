@@ -5,9 +5,9 @@ Setting up WioLink boards
 
 .. image:: ports.png
 
-We recommend that you set everything up by following the `Fast Setup`_ guide. For more advanced users, please feel free to skip `Fast Setup`_ guide, and download only the latest software needed for your system after reading the `Detailed Guide`_ that follows.
+We recommend that you set everything up by following the `Fast Guide`_. For more advanced users, please feel free to skip `Fast Guide`_, and download only the latest software needed for your system after reading the `Detailed Guide`_ that follows.
 
-Fast Setup
+Fast Guide
 ------------------------------------
 
 The fastest way to set up a clean installed Windows 10 computer is to use the link below to download all software required for building a development environment. After downloading the self-extracting archive file, double-click to run it, and choose a location on your computer to keep your files (Desktop recommended). 
@@ -24,13 +24,13 @@ Next, open the extracted folder, and do the following three things:
 5. Use the Second link above to download the firmware bin file and save it in the "GrowThings" folder. Open the EsPy program. Go to "Device"->"Ports"->"COMx" where ``x`` could be any number. Make sure the ``COMx`` is selected. Then, go to "Device"->'EspTool...". In the Dialog that opens subsequently (shown below), make sure "Serial Port" is the one that you saw in the "Ports" menu. Leave "Baud Rate", "Python.exe" as default. Use the "..." buttons to locate "esptool.py" and "firmware.bin". These two files should be in the "GrowThings" folder.
 6. Erase the firmware first, and click "Write" to write the firmware to the board.
 
----
+---------------------------------------
 
 Detailed Guide
-====================================
+------------------------------------
 
 System Requirement
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 We recommend Windows PCs for development because the excellent `EsPy` integrated development environment (IDE) runs only on Windows. If you are running MacOS or Linux operating systems, there are other IDEs available, such as `uPyCraft <https://legacy.gitbook.com/book/dfrobot/upycraft/details>`_ (for Windows and Mac) and `ESPlorer <https://github.com/4refr0nt/ESPlorer>`_ (written in Java, runs on all platforms), but they do not offer as comprehensive functionalities as does `EsPy`, such as a file system viewer that allows you to see the files on your WioLink board. The `PyCharm IDE <https://www.jetbrains.com/pycharm/>`_ is an advanced commercial Python IDE that runs on all platforms. It has a plug-in that supports MicroPython. `You can read about this plug-in here <https://blog.jetbrains.com/pycharm/2018/01/micropython-plugin-for-pycharm/>`_. `Visual Studio Code <https://code.visualstudio.com/>`_ has an extension for MicroPython as well. 
 
@@ -54,7 +54,7 @@ In order to run `EsPy`, make sure you have the following installed:
     .. image:: https://i.stack.imgur.com/CCXQG.jpg
 
 Downloading EsPy IDE
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the following link to download the latest version of EsPy (1.0.0.12 as of Apr. 23, 2018). The 7-Zip Archive Manager that you have just installed can be used to work with the downloaded 7z file. Double-click on the file and extract the "Release" folder to the "MicroPython" folder that you have just created. Feel free to rename the "Release" folder to "EsPy" if you wish.
 
@@ -63,7 +63,7 @@ Use the following link to download the latest version of EsPy (1.0.0.12 as of Ap
 * `EsPy IDE <https://github.com/jungervin/EsPy/tree/master/EsPy/Release>`_
 
 Downloading MicroPython Firmware
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the following link to download the custom MicroPython firmware for the WioLink boards. 
 
@@ -72,12 +72,12 @@ Use the following link to download the custom MicroPython firmware for the WioLi
 * `MicroPython Firmware for WioLink boards <https://github.com/digicosmos86/wiolink/raw/master/micropython-1.9.3-wiolink-clean.bin>`_
 
 Flashing MicroPython Firmware
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The EsPy IDE comes with an excellent GUI for flashing the firmware you have just downloaded. You can use it to flash the downloaded firmware to the WioLink board with the following steps:
 
 1. Install the :mod:`esptool` package with :mod:`pip`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Press `Win+R` (Press `Windows` key and `R` key at the same time). In the "Run..." dialog box that pops up, type cmd, and hit enter. In the command console window that shows up, type ``pip install esptool`` and hit enter. This command will install :mod:`esptool` to your Python and all its dependencies.
 
@@ -91,7 +91,7 @@ Press `Win+R` (Press `Windows` key and `R` key at the same time). In the "Run...
     .. image:: https://i.stack.imgur.com/CCXQG.jpg
 
 2. Put the WioLink board to Flash mode and connect it to the computer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you haven't already, use the following link to install the CP2012 driver for your system. Next, hold the config button on the WioLink board (the one to the left of the MicroUSB port) and connect it to your computer.
 
@@ -100,7 +100,7 @@ If you haven't already, use the following link to install the CP2012 driver for 
 * `CP2012 USB to UART Controller Driver <https://www.silabs.com/documents/public/software/CP210x_Windows_Drivers.zip>`_
 
 3. Flash the firmware
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Open the EsPy program. It should be in a folder called "EsPy" or "Release" in the "MicroPython" folder on your desktop.
 
@@ -113,7 +113,7 @@ Click the "1. Erase" button first.  After the old firmware is successfully erase
 .. image:: https://raw.githubusercontent.com/jungervin/EsPy/master/EsPy/Helps/images/esptool.png
 
 Testing Installation
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Close the EspTool dialog and click on the "Reset" button on the board to reset the board. Click the "Connect" button on the toolbar of EsPy. If you see something like:
 
