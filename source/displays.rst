@@ -98,9 +98,9 @@ Grow Light Strip
 
         Returns ``True`` if the grow light is on, or ``False`` if it is off.
 
-    .. method:: GrowLight.blink(color[=255, 255, 255]], times[=3])
+    .. method:: GrowLight.blink(color[=255, 255, 255]], times[=3], interval[=0.5])
 
-        Makes the LED strip blink. You can specify the ``color`` and ``times`` it blinks. ``color`` is a list or a tuple of ``R``, ``G``, ``B`` values, with intensity that goes from ``0`` to ``255``. For example, ``[255, 0, 0]`` sets the LED strip to red at its maximum intensity.
+        Makes the LED strip blink. You can specify the ``color`` and ``times`` it blinks. ``color`` is a list or a tuple of ``R``, ``G``, ``B`` values, with intensity that goes from ``0`` to ``255``. For example, ``[255, 0, 0]`` sets the LED strip to red at its maximum intensity. Use ``interval`` to control how long each blink lasts.
 
     .. method:: GrowLight.demo(program[="cycle"])
 
