@@ -108,6 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">Example:</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#connecting-to-bc-server">Connecting to BC Server</a></li>
 </ul>
 </li>
 </ul>
@@ -218,11 +219,11 @@
 <dl class="class">
 <dt id="iot.NodeRed">
 <em class="property">class </em><code class="descclassname">iot.</code><code class="descname">NodeRed</code><span class="sig-paren">(</span><em>ip</em><span class="optional">[</span>, <em>port=1880</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#iot.NodeRed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Stores the <code class="docutils literal"><span class="pre">ip</span></code> address of the machine running Node-RED. If Node-RED runs on a different <code class="docutils literal"><span class="pre">port</span></code> than <code class="docutils literal"><span class="pre">1880</span></code>, the <code class="docutils literal"><span class="pre">port</span></code> parameter can be used to specify the port.</p>
+<dd><p>Stores the <code class="docutils literal"><span class="pre">ip</span></code> address (or domain) of the machine running Node-RED. If Node-RED runs on a different <code class="docutils literal"><span class="pre">port</span></code> than <code class="docutils literal"><span class="pre">1880</span></code>, the <code class="docutils literal"><span class="pre">port</span></code> parameter can be used to specify the port.</p>
 <dl class="method">
 <dt id="iot.NodeRed.NodeRed.send_http">
-<code class="descclassname">NodeRed.</code><code class="descname">send_http</code><span class="sig-paren">(</span><em>url</em>, <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#iot.NodeRed.NodeRed.send_http" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send the specified <code class="docutils literal"><span class="pre">data</span></code> to the http-in node in the Node-RED flow. the <code class="docutils literal"><span class="pre">url</span></code> parameter needs to be exactly the same as the <code class="docutils literal"><span class="pre">URL</span></code> field of the http-in node (shown below). <code class="docutils literal"><span class="pre">data</span></code> can either be a number, a string, or a dictionary.</p>
+<code class="descclassname">NodeRed.</code><code class="descname">send_http</code><span class="sig-paren">(</span><em>url, data, debug[=True]</em><span class="sig-paren">)</span><a class="headerlink" href="#iot.NodeRed.NodeRed.send_http" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the specified <code class="docutils literal"><span class="pre">data</span></code> to the http-in node in the Node-RED flow. the <code class="docutils literal"><span class="pre">url</span></code> parameter needs to be exactly the same as the <code class="docutils literal"><span class="pre">URL</span></code> field of the http-in node (shown below). <code class="docutils literal"><span class="pre">data</span></code> can either be a number, a string, or a dictionary. By default, if the data is sent successfully, the program will prompt <code class="docutils literal"><span class="pre">&quot;Data</span> <span class="pre">sent!</span></code>. If that is undesirable, you can turn it off by setting <code class="docutils literal"><span class="pre">debug</span></code> to <code class="docutils literal"><span class="pre">False</span></code>.</p>
 <img alt="_images/node_red_http.png" src="_images/node_red_http.png" />
 </dd></dl>
 
@@ -265,6 +266,21 @@
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="connecting-to-bc-server">
+<h2>Connecting to BC Server<a class="headerlink" href="#connecting-to-bc-server" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="iot.BcServer">
+<em class="property">class </em><code class="descclassname">iot.</code><code class="descname">BcServer</code><a class="headerlink" href="#iot.BcServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>There is a dedicated server set up at Boston College with a Node-RED instance running for data collection purposes. To use the server, you can directly use this class. No parameters is needed to set it up.</p>
+<dl class="method">
+<dt id="iot.BcServer.BcServer.send_http">
+<code class="descclassname">BcServer.</code><code class="descname">send_http</code><span class="sig-paren">(</span><em>data, debug[=True]</em><span class="sig-paren">)</span><a class="headerlink" href="#iot.BcServer.BcServer.send_http" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the <code class="docutils literal"><span class="pre">data</span></code>, either a <code class="docutils literal"><span class="pre">JSON</span></code> or a <code class="docutils literal"><span class="pre">String</span></code>, and this method will send the data directly to the BC server. No need to specify IP or URL. By default, if the data is sent successfully, the program will prompt <code class="docutils literal"><span class="pre">&quot;Data</span> <span class="pre">sent!</span></code>. If that is undesirable, you can turn it off by setting <code class="docutils literal"><span class="pre">debug</span></code> to <code class="docutils literal"><span class="pre">False</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 

@@ -44,11 +44,11 @@ This class can be used to send data to any device that runs Node-RED, such as Ra
 
 .. class:: iot.NodeRed(ip, [port=1880])
 
-    Stores the ``ip`` address of the machine running Node-RED. If Node-RED runs on a different ``port`` than ``1880``, the ``port`` parameter can be used to specify the port.
+    Stores the ``ip`` address (or domain) of the machine running Node-RED. If Node-RED runs on a different ``port`` than ``1880``, the ``port`` parameter can be used to specify the port.
 
-    .. method:: NodeRed.send_http(url, data)
+    .. method:: NodeRed.send_http(url, data, debug[=True])
 
-        Send the specified ``data`` to the http-in node in the Node-RED flow. the ``url`` parameter needs to be exactly the same as the ``URL`` field of the http-in node (shown below). ``data`` can either be a number, a string, or a dictionary.
+        Send the specified ``data`` to the http-in node in the Node-RED flow. the ``url`` parameter needs to be exactly the same as the ``URL`` field of the http-in node (shown below). ``data`` can either be a number, a string, or a dictionary. By default, if the data is sent successfully, the program will prompt ``"Data sent!``. If that is undesirable, you can turn it off by setting ``debug`` to ``False``.
 
         .. image:: node_red_http.png
 
@@ -89,3 +89,14 @@ Example:
 
         node.send_http(url="/test", data=data_dict)
         time.sleep(10)
+
+Connecting to BC Server
+--------------------------------
+
+.. class:: iot.BcServer()
+
+    There is a dedicated server set up at Boston College with a Node-RED instance running for data collection purposes. To use the server, you can directly use this class. No parameters is needed to set it up.
+
+    .. method:: BcServer.send_http(data, debug[=True])
+
+        Specify the ``data``, either a ``JSON`` or a ``String``, and this method will send the data directly to the BC server. No need to specify IP or URL. By default, if the data is sent successfully, the program will prompt ``"Data sent!``. If that is undesirable, you can turn it off by setting ``debug`` to ``False``.

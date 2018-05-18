@@ -23,10 +23,10 @@
       - :ref:`button`
       - :ref:`grow_light`
     * - |moisture_sensor|
-      - 
+      - |buzzer|
       - 
     * - :ref:`moisture_sensor`
-      -
+      - :ref:`buzzer`
       -
 
 .. |temp_sensor| image:: https://media.digikey.com/Photos/Seeed%20Technology%20Ltd/101020011_sml.JPG
@@ -54,6 +54,10 @@
     :height: 200px
 
 .. |button| image:: https://github.com/SeeedDocument/Grove_Button/raw/master/img/Button.jpg
+    :width: 200px
+    :height: 200px
+
+.. |buzzer| image:: https://github.com/SeeedDocument/Grove_Buzzer/raw/master/img/buzzer_s.jpg
     :width: 200px
     :height: 200px
 

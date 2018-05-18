@@ -126,3 +126,43 @@ Turns the LED on/off with a callback function
     ## Set the callback function to Button.on_release method.
 
     button.on_release(callback=turn_on_led) # Note that no () are needed.
+
+.. _buzzer:
+
+Buzzer
+-------------------------------
+
+.. image:: https://github.com/SeeedDocument/Grove_Buzzer/raw/master/img/buzzer_s.jpg
+    :width: 200px
+    :height: 200px
+
+.. class:: actuators.Buzzer(port[=2])
+
+    Allows control of a Grove Buzzer. You can control the buzzer to play a note or a piece of music. The notes are written in strings. Available notes are ``["c", "d", "e", "f", "g", "a", "b", "C", " "]``. White space means skip.
+
+    .. method:: Buzzer.play_note(note, duration[=0.5])
+
+        Plays a note. ``duration`` controls how long the note gets played.
+
+    .. method:: Buzzer.play_music(notes, rhythms[=None], tempo[=1])
+
+        Plays a string of ``notes``. You may supply a list of numbers the same length as ``notes`` as ``rhythms``, how long each note gets played. You may also specify an overall ``tempo``. The larger ``tempo`` is, the slower the music.
+
+Example
+^^^^^^^^^^^^^^^^^^^^^
+
+Using the buzzer
+
+.. code-block:: python
+
+    from actuators import Buzzer
+    buzzer = Buzzer(port=2)
+
+    # Plays one note
+
+    buzzer.play_note("c", duration=1)
+
+    # Plays a piece of music
+
+    buzzer.play_music("cdefgabC", rhythms=[32, 16, 8, 4, 2, 1, 0.5, 1], tempo = 0.8)
+

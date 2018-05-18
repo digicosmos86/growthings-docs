@@ -98,6 +98,14 @@ Grow Light Strip
 
         Returns ``True`` if the grow light is on, or ``False`` if it is off.
 
+    .. method:: GrowLight.blink(color[=255, 255, 255]], times[=3])
+
+        Makes the LED strip blink. You can specify the ``color`` and ``times`` it blinks. ``color`` is a list or a tuple of ``R``, ``G``, ``B`` values, with intensity that goes from ``0`` to ``255``. For example, ``[255, 0, 0]`` sets the LED strip to red at its maximum intensity.
+
+    .. method:: GrowLight.demo(program[="cycle"])
+
+        Demonstrates 3 different animations on the LED strip.  The default program is ``"cycle"``. Also available are ``"bounce"`` and ``"fade"``. Try them out!
+
     .. hint::
 
         This class is a subclass of MicroPython's ``neopixel.NeoPixel`` class, so it can be programmed the same way as the Neo Pixel.  See `this page <http://docs.micropython.org/en/latest/esp8266/esp8266/tutorial/neopixel.html>`_ for more details and examples.

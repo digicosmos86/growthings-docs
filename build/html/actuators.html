@@ -108,10 +108,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#id4">Example</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#buzzer">Buzzer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Example</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="displays.html"><code class="docutils literal"><span class="pre">displays</span></code> - Working with Screens and LEDs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="iot.html">IoT modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iot.html"><code class="docutils literal"><span class="pre">iot</span></code> Connecting with Other Devices</a></li>
 </ul>
 </li>
 </ul>
@@ -304,6 +308,44 @@
 <span class="c1">## Set the callback function to Button.on_release method.</span>
 
 <span class="n">button</span><span class="o">.</span><span class="n">on_release</span><span class="p">(</span><span class="n">callback</span><span class="o">=</span><span class="n">turn_on_led</span><span class="p">)</span> <span class="c1"># Note that no () are needed.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="buzzer">
+<span id="id5"></span><h2>Buzzer<a class="headerlink" href="#buzzer" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="https://github.com/SeeedDocument/Grove_Buzzer/raw/master/img/buzzer_s.jpg"><img alt="https://github.com/SeeedDocument/Grove_Buzzer/raw/master/img/buzzer_s.jpg" src="https://github.com/SeeedDocument/Grove_Buzzer/raw/master/img/buzzer_s.jpg" style="width: 200px; height: 200px;" /></a>
+<dl class="class">
+<dt id="actuators.Buzzer">
+<em class="property">class </em><code class="descclassname">actuators.</code><code class="descname">Buzzer</code><span class="sig-paren">(</span><em>port[=2]</em><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Buzzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows control of a Grove Buzzer. You can control the buzzer to play a note or a piece of music. The notes are written in strings. Available notes are <code class="docutils literal"><span class="pre">[&quot;c&quot;,</span> <span class="pre">&quot;d&quot;,</span> <span class="pre">&quot;e&quot;,</span> <span class="pre">&quot;f&quot;,</span> <span class="pre">&quot;g&quot;,</span> <span class="pre">&quot;a&quot;,</span> <span class="pre">&quot;b&quot;,</span> <span class="pre">&quot;C&quot;,</span> <span class="pre">&quot;</span> <span class="pre">&quot;]</span></code>. White space means skip.</p>
+<dl class="method">
+<dt id="actuators.Buzzer.Buzzer.play_note">
+<code class="descclassname">Buzzer.</code><code class="descname">play_note</code><span class="sig-paren">(</span><em>note, duration[=0.5]</em><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Buzzer.Buzzer.play_note" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays a note. <code class="docutils literal"><span class="pre">duration</span></code> controls how long the note gets played.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="actuators.Buzzer.Buzzer.play_music">
+<code class="descclassname">Buzzer.</code><code class="descname">play_music</code><span class="sig-paren">(</span><em>notes, rhythms[=None], tempo[=1]</em><span class="sig-paren">)</span><a class="headerlink" href="#actuators.Buzzer.Buzzer.play_music" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plays a string of <code class="docutils literal"><span class="pre">notes</span></code>. You may supply a list of numbers the same length as <code class="docutils literal"><span class="pre">notes</span></code> as <code class="docutils literal"><span class="pre">rhythms</span></code>, how long each note gets played. You may also specify an overall <code class="docutils literal"><span class="pre">tempo</span></code>. The larger <code class="docutils literal"><span class="pre">tempo</span></code> is, the slower the music.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="id6">
+<h3>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Using the buzzer</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">actuators</span> <span class="kn">import</span> <span class="n">Buzzer</span>
+<span class="n">buzzer</span> <span class="o">=</span> <span class="n">Buzzer</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Plays one note</span>
+
+<span class="n">buzzer</span><span class="o">.</span><span class="n">play_note</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Plays a piece of music</span>
+
+<span class="n">buzzer</span><span class="o">.</span><span class="n">play_music</span><span class="p">(</span><span class="s2">&quot;cdefgabC&quot;</span><span class="p">,</span> <span class="n">rhythms</span><span class="o">=</span><span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">tempo</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
